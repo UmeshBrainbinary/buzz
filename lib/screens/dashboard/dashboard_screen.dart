@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  DashBoardScreen({super.key, required this.child, required this.index});
+  DashBoardScreen({super.key, required this.child, required this.screenName});
 
   final Widget child;
 
-  final int index;
+  final String screenName;
 
   @override
   State<DashBoardScreen> createState() => _DashBoardScreenState();
@@ -18,24 +18,24 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final DashBoardController dashBoardController =
       Get.put(DashBoardController());
 
-  indexWiseNavigation({index}) {
+  indexWiseNavigation({String? index}) {
     print("------------------------$index");
-    if (index == 0) {
+    if (index == 'DashBoards') {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('first'), index: 0));
-    } else if (index == 1) {
+          () => DashBoardScreen(child: Text('first'), screenName: 'DashBoards'));
+    } else if (index == 'General') {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('second'), index: 1));
-    } else if (index == 2) {
+          () => DashBoardScreen(child: Text('second'), screenName: 'General'));
+    } else if (index == 'Project') {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('third'), index: 2));
-    } else if (index == 3) {
+          () => DashBoardScreen(child: Text('third'), screenName: 'Project'));
+    } else if (index == 'E-Commerce') {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('forth'), index: 3));
+          () => DashBoardScreen(child: Text('forth'), screenName: 'E-Commerce'));
     }
   }
 
@@ -65,55 +65,75 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Column(
                     children: [
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: dashBoardController.items.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return SizedBox(
-                              height: 47,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        indexWiseNavigation(index: index);
-                                      },
-                                      child: Container(
-                                        margin:
-                                            const EdgeInsets.symmetric(vertical: 1),
-                                        height: 45,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 5),
-                                        decoration:
-                                            const BoxDecoration(color: Colors.pink),
-                                        child: Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            dashBoardController.items[index],
-                                            textAlign: TextAlign.start,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  widget.index == index
-                                      ? Container(
-                                          width: 4,
-                                          height: 47,
-                                          alignment: Alignment.centerRight,
-                                          decoration: BoxDecoration(
-                                              color: Colors.brown,
-                                              borderRadius:
-                                                  BorderRadius.circular(3)),
-                                        )
-                                      : SizedBox(),
-                                ],
-                              ));
-                        },
+
+
+                      Container(
+                        margin:
+                        const EdgeInsets.symmetric(vertical: 1),
+                        height: 45,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 5),
+                        decoration:
+                        const BoxDecoration(color: Colors.pink),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            '',
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                       ),
+
+
+                      // ListView.builder(
+                      //   shrinkWrap: true,
+                      //   physics: const NeverScrollableScrollPhysics(),
+                      //   itemCount: dashBoardController.items.length,
+                      //   itemBuilder: (BuildContext context, int index) {
+                      //     return SizedBox(
+                      //         height: 47,
+                      //         child: Row(
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.spaceBetween,
+                      //           children: [
+                      //             Expanded(
+                      //               child: GestureDetector(
+                      //                 onTap: () {
+                      //                   indexWiseNavigation(index: dashBoardController.items[index]);
+                      //                 },
+                      //                 child: Container(
+                      //                   margin:
+                      //                       const EdgeInsets.symmetric(vertical: 1),
+                      //                   height: 45,
+                      //                   padding: const EdgeInsets.symmetric(
+                      //                       horizontal: 20, vertical: 5),
+                      //                   decoration:
+                      //                       const BoxDecoration(color: Colors.pink),
+                      //                   child: Align(
+                      //                     alignment: Alignment.centerLeft,
+                      //                     child: Text(
+                      //                       dashBoardController.items[index],
+                      //                       textAlign: TextAlign.start,
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             widget.screenName == dashBoardController.items[index]
+                      //                 ? Container(
+                      //                     width: 4,
+                      //                     height: 47,
+                      //                     alignment: Alignment.centerRight,
+                      //                     decoration: BoxDecoration(
+                      //                         color: Colors.brown,
+                      //                         borderRadius:
+                      //                             BorderRadius.circular(3)),
+                      //                   )
+                      //                 : SizedBox(),
+                      //           ],
+                      //         ));
+                      //   },
+                      // ),
                     ],
                   ),
                 ),

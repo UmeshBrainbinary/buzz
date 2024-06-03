@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const FaqScreen(),
-      // home: DashBoardScreen(
-      //   child: const Text('main'),
-      //   index: 0,
-      // ),
+      // home: const FaqScreen(),
+      home: DashBoardScreen(
+        child: const Text('main'),
+        screenName: 'Dashboards',
+      ),
     );
   }
 }
