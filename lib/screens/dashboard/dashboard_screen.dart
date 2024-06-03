@@ -70,7 +70,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: dashBoardController.items.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
+                          return SizedBox(
                               height: 47,
                               child: Row(
                                 mainAxisAlignment:
@@ -83,12 +83,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       },
                                       child: Container(
                                         margin:
-                                            EdgeInsets.symmetric(vertical: 1),
+                                            const EdgeInsets.symmetric(vertical: 1),
                                         height: 45,
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 20, vertical: 5),
                                         decoration:
-                                            BoxDecoration(color: Colors.pink),
+                                            const BoxDecoration(color: Colors.pink),
                                         child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
