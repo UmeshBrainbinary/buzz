@@ -1,3 +1,4 @@
+import 'package:buzz/utils/string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,7 @@ class FaqScreen extends StatelessWidget {
             const Row(
               children: [
                 Text(
-                  'FAQ',
+                  StringRes.faq,
                   style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
                 ),
                 Spacer(),
@@ -32,7 +33,7 @@ class FaqScreen extends StatelessWidget {
                   width: 7,
                 ),
                 Text(
-                  'FAQ',
+                  StringRes.faq,
                   style: TextStyle(fontSize: 12),
                 ),
                 SizedBox(
@@ -43,7 +44,7 @@ class FaqScreen extends StatelessWidget {
                   width: 7,
                 ),
                 Text(
-                  'FAQ',
+                  StringRes.faq,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.blue,
@@ -67,7 +68,7 @@ class FaqScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Quick Quetions are answered',
+                              StringRes.quick,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -90,7 +91,7 @@ class FaqScreen extends StatelessWidget {
                               height: 20,
                             ),
                             const Text(
-                              'Intellectual Property',
+                              StringRes.intellectual,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -110,7 +111,7 @@ class FaqScreen extends StatelessWidget {
                               height: 20,
                             ),
                             const Text(
-                              'Selling and Buying',
+                              StringRes.selling,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -132,7 +133,7 @@ class FaqScreen extends StatelessWidget {
                               height: 20,
                             ),
                             const Text(
-                              'User Accounts',
+                              StringRes.user,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
