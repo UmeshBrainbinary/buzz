@@ -1,4 +1,6 @@
 import 'package:buzz/screens/dashboard/dashboard_controller.dart';
+import 'package:buzz/screens/product/product_screen.dart';
+import 'package:buzz/screens/product_page/product_page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -27,11 +29,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     } else if (index == 1) {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('second'), index: 1));
+          () => DashBoardScreen(child: ProductPage(), index: 1));
     } else if (index == 2) {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('third'), index: 2));
+          () => DashBoardScreen(child: ProductPageScreen(), index: 2));
     } else if (index == 3) {
       Get.offAll(
           transition: Transition.noTransition,

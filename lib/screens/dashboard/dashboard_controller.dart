@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class DashBoardController extends GetxController{
   final List items = [
     'DashBoards',
-    'Widgets',
+    'product',
     'Projects',
     "E-Commerce",
     "Chat",

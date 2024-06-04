@@ -4,6 +4,7 @@ class Product {
   final String imageUrl;
   final double price;
   final double rating;
+  bool isLiked;
 
   Product({
     required this.name,
@@ -11,5 +12,6 @@ class Product {
     required this.price,
     required this.rating,
     required this.subName,
+    this.isLiked = false,
   });
 }
