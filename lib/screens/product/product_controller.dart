@@ -59,3 +59,46 @@ bool _tap = false;
 
 
 }
+
+
+// import 'package:get/get.dart';
+//
+// class ProductController extends GetxController {
+//   var isLiked = false.obs;
+//   var showIcons = false.obs;
+//   var countdown = 0.obs;
+//      final count = RxInt(1);
+//
+//   void decrement() {
+//     if (count.value > 0) {
+//       count.value--;
+//     }
+//     update(['update']);
+//   }
+//   void increment() {
+//     if (count.value < 100) { // Optional: Set a maximum value
+//       count.value++;
+//     }
+//     update(['update']);
+//   }
+//
+//   void toggleLike() {
+//     isLiked.value = !isLiked.value;
+//   }
+//
+//   void toggleIcons() {
+//     showIcons.value = !showIcons.value;
+//   }
+//
+//   void startCountdown(int seconds) {
+//     countdown.value = seconds;
+//     if (countdown.value > 0) {
+//       Future.delayed(Duration(seconds: 1), () {
+//         countdown.value--;
+//         if (countdown.value > 0) {
+//           startCountdown(countdown.value);
+//         }
+//       });
+//     }
+//   }
+// }

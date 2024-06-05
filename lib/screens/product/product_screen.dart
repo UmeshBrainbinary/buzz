@@ -32,6 +32,7 @@ class ProductCard extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
+
                 Container(
                   width: double.infinity,
                   height: size.width < 600 ? 120 : 200,
@@ -40,6 +41,14 @@ class ProductCard extends StatelessWidget {
                     fit: BoxFit.fill,
                   ),
                 ),
+                product.isLiked == true? Container(
+                  width: double.infinity,
+                  height: size.width < 600 ? 120 : 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black26,
+                  ),
+                ):SizedBox(),
                 product.isLiked == true
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -294,3 +303,91 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'product_controller.dart';
+//
+// class ProductPage extends StatelessWidget {
+//   final ProductController productController = Get.put(ProductController());
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Product Card'),
+//       ),
+//       body: Center(
+//         child: GestureDetector(
+//           onTap: () {
+//             productController.toggleIcons();
+//             if (productController.showIcons.value) {
+//               productController.startCountdown(86400); // Countdown for 24 hours
+//             }
+//           },
+//           child: Stack(
+//             alignment: Alignment.center,
+//             children: [
+//               Image.network(
+//                 'https://via.placeholder.com/150',
+//                 fit: BoxFit.cover,
+//               ),
+//               Obx(() {
+//                 return productController.showIcons.value
+//                     ? Row(
+//                   mainAxisAlignment: MainAxisAlignment.center,
+//                   children: [
+//                     Icon(Icons.shopping_cart, color: Colors.white),
+//                     SizedBox(width: 20),
+//                     Icon(Icons.remove_red_eye, color: Colors.white),
+//                     SizedBox(width: 20),
+//                     GestureDetector(
+//                       onTap: () {
+//                         productController.toggleLike();
+//                       },
+//                       child: Icon(
+//                         productController.isLiked.value
+//                             ? Icons.favorite
+//                             : Icons.favorite_border,
+//                         color: Colors.white,
+//                       ),
+//                     ),
+//                   ],
+//                 )
+//                     : Container();
+//               }),
+//               Positioned(
+//                 bottom: 10,
+//                 left: 10,
+//                 child: Obx(() {
+//                   return Row(
+//                     children: [
+//                       Icon(Icons.fireplace, color: Colors.purple),
+//                       SizedBox(width: 5),
+//                       Text('New', style: TextStyle(color: Colors.white)),
+//                       SizedBox(width: 20),
+//                       Icon(Icons.flash_on, color: Colors.orange),
+//                       SizedBox(width: 5),
+//                       Text(
+//                         _formatDuration(Duration(seconds: productController.countdown.value)),
+//                         style: TextStyle(color: Colors.white),
+//                       ),
+//                     ],
+//                   );
+//                 }),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   String _formatDuration(Duration duration) {
+//     String twoDigits(int n) => n.toString().padLeft(2, '0');
+//     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+//     String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+//     return "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
+//   }
+// }

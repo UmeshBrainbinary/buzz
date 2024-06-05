@@ -1,4 +1,5 @@
 import 'package:buzz/screens/dashboard/dashboard_controller.dart';
+import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     if (index == 0) {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child: Text('first'), index: 0));
+          () => DashBoardScreen(child: InvoiceScreen(), index: 0));
     } else if (index == 1) {
       Get.offAll(
           transition: Transition.noTransition,
