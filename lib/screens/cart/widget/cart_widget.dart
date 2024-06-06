@@ -79,27 +79,27 @@ Widget productTable(){
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Product')))),
+                                      child: Center(child: Text('Product',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Product Name')))),
+                                      child: Center(child: Text('Product Name',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Price')))),
+                                      child: Center(child: Text('Price',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Quantity')))),
+                                      child: Center(child: Text('Quantity',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Action')))),
+                                      child: Center(child: Text('Action',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                   TableCell(child: SizedBox(
                                       height: 50,
                                       width: 200,
-                                      child: Center(child: Text('Total')))),
+                                      child: Center(child: Text('Total',style: TextStyle(fontWeight: FontWeight.bold),)))),
                                 ],
                               ),
                               ...productController.products.map((product) {
@@ -128,7 +128,7 @@ Widget productTable(){
                                         width: 200,
                                         child: Center(
                                           child: Container(
-                                            width: 90,
+                                            width: 120,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(10),
                                               color: Colors.black12
@@ -136,20 +136,40 @@ Widget productTable(){
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
-                                                IconButton(
-                                                  icon: Icon(Icons.remove),
-                                                  onPressed: () {
-                                                    if (product.quantity.value > 0) {
-                                                      product.quantity.value--;
-                                                    }
-                                                  },
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0,bottom: 8,left: 8),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(50),
+                                                      color: Colors.white
+                                                    ),
+                                                    child: IconButton(
+                                                      icon: Icon(Icons.remove),
+                                                      onPressed: () {
+                                                        if (product.quantity.value > 0) {
+                                                          product.quantity.value--;
+                                                        }
+                                                      },
+                                                    ),
+                                                  ),
                                                 ),
+                                                Spacer(),
                                                 Obx(() => Text('${product.quantity.value}')),
-                                                IconButton(
-                                                  icon: Icon(Icons.add),
-                                                  onPressed: () {
-                                                    product.quantity.value++;
-                                                  },
+                                                Spacer(),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0,bottom: 8,right: 8),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(50),
+                                                        color: Colors.white
+                                                    ),
+                                                    child: IconButton(
+                                                      icon: Icon(Icons.add),
+                                                      onPressed: () {
+                                                        product.quantity.value++;
+                                                      },
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -180,6 +200,10 @@ Widget productTable(){
                                   ],
                                 );
                               }).toList(),
+                              _buildTotalRow(),
+                              buildContainer(),
+
+
                             ],
                           ),
                         ),
@@ -310,3 +334,79 @@ Widget productTable(){
 
 
 
+TableRow _buildTotalRow() {
+  return TableRow(
+    children: [
+      _buildCell(''),
+      _buildCell(''),
+      _buildCell(''),
+      _buildCell(''),
+      _buildCell('Total', isHeader: true, colSpan: 3),
+      _buildCell('\$${productController.grandTotal.toStringAsFixed(2)}',
+          isHeader: true),
+    ],
+  );
+}
+
+TableRow buildContainer(){
+  return TableRow(
+    children: [
+      _buildCell(''),
+      _buildCell(''),
+      _buildCell(''),
+      _buildCell(''),
+      SizedBox(
+        height: 100,
+        child: TableCell(child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.pink
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Continue shopping',style: TextStyle(color: Colors.white),),
+              ),
+            ),
+          ],
+        )),
+      ),SizedBox(
+        height: 100,
+        child: TableCell(child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+             decoration: BoxDecoration(
+               borderRadius: BorderRadius.circular(5),
+               color: Colors.green
+             ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Check out',style: TextStyle(color: Colors.white),),
+              ),
+            ),
+          ],
+        )),
+      ),
+    ]
+  );
+}
+Widget _buildCell(String text, {bool isHeader = false, int colSpan = 1}) {
+  return TableCell(
+    verticalAlignment: TableCellVerticalAlignment.middle,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
+          color: isHeader ? Colors.white : Colors.black,
+          fontSize: isHeader ? 16 : 14,
+        ),
+        textAlign: isHeader ? TextAlign.center : TextAlign.left,
+      ),
+    ),
+  );
+}

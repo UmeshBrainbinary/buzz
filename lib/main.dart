@@ -4,6 +4,7 @@ import 'package:buzz/screens/faq/faq_screen.dart';
 import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      scrollBehavior: MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch, PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown,
+        }
+      ),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
