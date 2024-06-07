@@ -20,6 +20,7 @@ class StringRes {
   static const String projects = 'Projects';
   static const String eCommerce = 'E-commerce';
   static const String chat = 'Chat';
+  static const String price = 'Price';
   static const String users = 'Users';
   static const String application = 'Applications';
   static const String formsTable = 'Forms & Table';
@@ -30,6 +31,33 @@ class StringRes {
   static const String uiKits = 'UI Kits';
   static const String buttons = 'Buttons';
   static const String miscellaneous = 'Miscellaneous';
-
-
+  static const String product = 'Product';
+  static const String productPage = 'Product Page';
+  static const String checkOut = 'Checkout';
+  static const String pricing = 'Pricing';
+  static const String firstName = 'First Name';
+  static const String phone = 'Phone';
+  static const String email = 'Email Address';
+  static const String country = 'Country';
+  static const String address = 'Address';
+  static const String city = 'Town/City';
+  static const String state = 'State/Country';
+  static const String postalCode = 'Postal Code';
+  static const String sunTotal = 'Sub Total :';
+  static const String discount = 'Discount :';
+  static const String shipping = 'Shipping Charge :';
+  static const String tex = 'Estimated Tax :';
+  static const String totalUsd = 'Total(Usd) :';
+  static const String fileManager = 'File Manager';
+  static const String userProfile = 'User Profile';
+  static const String userEdit = 'User Edit';
+  static const String userCards = 'User Cards';
+  static const String founder = 'Co - Founder,SpaceX';
+  static const String vivian  = 'Vivian Jenna Wilson';
+  static const String eloan = "Eloan Reeve musk is a business magnate and investor. He is the founder";
+  static const String went = 'Went to:';
+  static const String worked = 'Worked at:';
+  static const String live = 'Live in:';
+  static const String from = 'From:';
+  static const String myProfile = 'My Profile';
 }

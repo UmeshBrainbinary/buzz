@@ -1,10 +1,19 @@
+import 'package:buzz/screens/cart/cart_screen.dart';
+import 'package:buzz/screens/checkout/checkout_screen.dart';
 import 'package:buzz/screens/dashboard/dashboard_controller.dart';
+import 'package:buzz/screens/faq/faq_screen.dart';
+import 'package:buzz/screens/file_manager/file_manager_screen.dart';
+import 'package:buzz/screens/invoice/invoice_screen.dart';
+import 'package:buzz/screens/pricing/pricing_screen.dart';
+import 'package:buzz/screens/product/product_screen.dart';
+import 'package:buzz/screens/product_page/product_page_screen.dart';
+import 'package:buzz/screens/user_edit/user_edit_screen.dart';
+import 'package:buzz/screens/user_profile/user_profile_screen.dart';
 import 'package:buzz/utils/string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
 
 class DashBoardScreen extends StatefulWidget {
   DashBoardScreen({super.key, required this.child, required this.screenName});
@@ -26,20 +35,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     if (index == StringRes.dashboards) {
       Get.offAll(
           transition: Transition.noTransition,
-// <<<<<<< HEAD
-//           () => DashBoardScreen(child: InvoiceScreen(), index: 0));
-//     } else if (index == 1) {
-//       Get.offAll(
-//           transition: Transition.noTransition,
-//           () => DashBoardScreen(child: ProductPage(), index: 1));
-//     } else if (index == 2) {
-//       Get.offAll(
-//           transition: Transition.noTransition,
-//           () => DashBoardScreen(child: ProductPageScreen(), index: 2));
-//     } else if (index == 3) {
-// =======
-          () =>
-              DashBoardScreen(child: Text('dashBoard'), screenName: 'DashBoards'));
+          () => DashBoardScreen(
+              child: Text('dashBoard'), screenName: 'DashBoards'));
     } else if (index == StringRes.general) {
       Get.offAll(
           transition: Transition.noTransition,
@@ -49,23 +46,68 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           transition: Transition.noTransition,
           () => DashBoardScreen(child: Text('charts'), screenName: 'Project'));
     } else if (index == StringRes.faq) {
-// >>>>>>> origin/janki_dev
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(child: FaqScreen(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.tables) {
       Get.offAll(
           transition: Transition.noTransition,
           () =>
-              DashBoardScreen(child: Text('faq'), screenName: 'E-Commerce'));
-    }
-    else if (index == StringRes.tables) {
-      Get.offAll(
-          transition: Transition.noTransition,
-              () =>
               DashBoardScreen(child: Text('tables'), screenName: 'E-Commerce'));
-    }
-    else if (index == StringRes.chat) {
+    } else if (index == StringRes.chat) {
       Get.offAll(
           transition: Transition.noTransition,
-              () =>
-              DashBoardScreen(child: Text('chat'), screenName: 'E-Commerce'));
+          () => DashBoardScreen(child: Text('chat'), screenName: 'E-Commerce'));
+    } else if (index == StringRes.product) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () =>
+              DashBoardScreen(child: ProductPage(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.productPage) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: ProductPageScreen(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.invoice) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: InvoiceScreen(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.cart) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(child: CartScreen(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.checkOut) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: CheckOutScreen(), screenName: 'E-Commerce'));
+    } else if (index == StringRes.pricing) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: PricingScreen(), screenName: 'E-Commerce'));
+    }else if (index == StringRes.fileManager) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: HomeScreen(), screenName: 'E-Commerce'));
+    }
+    else if (index == StringRes.userProfile) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: UserProfileScreen(), screenName: 'Users'));
+    }else if (index == StringRes.userEdit) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: UserEditScreen(), screenName: 'Users'));
+    }else if (index == StringRes.userCards) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(
+              child: Text('card'), screenName: 'Users'));
     }
   }
 
@@ -108,12 +150,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w900, fontSize: 25),
                               ),
-                        Text(
-                        '.',
-                        textAlign: TextAlign.start,
-                    style: TextStyle(
-                    fontWeight: FontWeight.w900, color: Colors.blueAccent,fontSize: 25),
-                  ),
+                              Text(
+                                '.',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.blueAccent,
+                                    fontSize: 25),
+                              ),
                             ],
                           ),
                         ),
@@ -141,11 +185,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-
                               setState(() {
-                                dashBoardController.isOpenWidgets= false;
-                                dashBoardController.selectedMainCategory='Dashboards';
-                                indexWiseNavigation(index: StringRes.dashboards);
+                                dashBoardController.isOpenWidgets = false;
+                                dashBoardController.selectedMainCategory =
+                                    'Dashboards';
+                                indexWiseNavigation(
+                                    index: StringRes.dashboards);
                               });
                             },
                             child: Row(
@@ -203,14 +248,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   setState(() {
                                     if (dashBoardController.isOpenWidgets ==
                                         true) {
-                                      dashBoardController.isOpenWidgets =
-                                          false;
+                                      dashBoardController.isOpenWidgets = false;
                                     } else {
-                                      dashBoardController.isOpenWidgets =
-                                          true;
+                                      dashBoardController.isOpenWidgets = true;
                                     }
                                   });
-
                                 },
                                 child: Text(
                                   StringRes.widgetss,
@@ -226,62 +268,67 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 ),
                               ),
                               Spacer(),
-                              Icon( dashBoardController.isOpenWidgets ==
-                                  true?Icons.arrow_drop_down_sharp:Icons.arrow_drop_up_sharp,
+                              Icon(
+                                  dashBoardController.isOpenWidgets == true
+                                      ? Icons.arrow_drop_down_sharp
+                                      : Icons.arrow_drop_up_sharp,
                                   color: dashBoardController
                                               .selectedMainCategory ==
                                           'Widgets'
                                       ? Colors.blueAccent
                                       : Colors.black),
-
                             ],
                           ),
                         ),
-                        dashBoardController.selectedMainCategory ==
-                            'Widgets' &&
-                            dashBoardController.isOpenWidgets ==
-                                true
+                        dashBoardController.selectedMainCategory == 'Widgets' &&
+                                dashBoardController.isOpenWidgets == true
                             ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(width: 25,),
-                                GestureDetector(
-                                  onTap: () {
-                                    indexWiseNavigation(index: StringRes.general);
-                                  },
-                                  child: Text(
-                                    StringRes.general,
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 11),
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(width: 25,),
-                                GestureDetector(
-                                  onTap: () {
-                                    indexWiseNavigation(index: StringRes.charts);
-                                  },
-                                  child: Text(
-                                    StringRes.charts,
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 11),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.general);
+                                        },
+                                        child: Text(
+                                          StringRes.general,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
-                                                      ],
-                                                    )
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.charts);
+                                        },
+                                        child: Text(
+                                          StringRes.charts,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
                             : SizedBox(),
                         Expanded(
                           child: SizedBox(
@@ -315,18 +362,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory=StringRes.projects;
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.projects;
 
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
                             child: Row(
                               children: [
                                 Icon(
                                   CupertinoIcons.checkmark_alt_circle,
                                   size: 17,
-                                  color:   dashBoardController.selectedMainCategory==StringRes.projects? Colors.blueAccent:Colors.black,
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.projects
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -335,64 +385,23 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   StringRes.projects,
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 12,    color:   dashBoardController.selectedMainCategory==StringRes.projects? Colors.blueAccent:Colors.black,),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: dashBoardController
+                                                .selectedMainCategory ==
+                                            StringRes.projects
+                                        ? Colors.blueAccent
+                                        : Colors.black,
+                                  ),
                                 ),
                                 Spacer(),
                                 Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color:   dashBoardController.selectedMainCategory==StringRes.projects ? Colors.blueAccent:Colors.black,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: SizedBox(
-                            height: 10,
-                          ),
-                        ),
-                         Align(
-                          alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                            onTap: () {
-                              dashBoardController.selectedMainCategory= StringRes.eCommerce;
-                              setState(() {
-
-                              });
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.delete_outlined,
-                                  size: 17,
-                                  color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      StringRes.eCommerce,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
-
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                                Spacer(),
-
-                                Icon(
-                                  Icons.arrow_drop_up_sharp,
-                                  color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.projects
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                               ],
                             ),
@@ -405,15 +414,253 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.delete_outlined,
+                                  size: 17,
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          'E-commerce'
+                                      ? Colors.blueAccent
+                                      : Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  dashBoardController.selectedMainCategory =
+                                      'E-commerce';
+                                  setState(() {
+                                    if (dashBoardController.openWidget ==
+                                        true) {
+                                      dashBoardController.openWidget = false;
+                                    } else {
+                                      dashBoardController.openWidget = true;
+                                    }
+                                  });
+                                },
+                                child: Text(
+                                  StringRes.eCommerce,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: dashBoardController
+                                                  .selectedMainCategory ==
+                                              'E-commerce'
+                                          ? Colors.blueAccent
+                                          : Colors.black),
+                                ),
+                              ),
+                              Spacer(),
+                              Icon(
+                                  dashBoardController.openWidget == true
+                                      ? Icons.arrow_drop_down_sharp
+                                      : Icons.arrow_drop_up_sharp,
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          'E-commerce'
+                                      ? Colors.blueAccent
+                                      : Colors.black),
+                            ],
+                          ),
+                        ),
+                        dashBoardController.selectedMainCategory ==
+                                    'E-commerce' &&
+                                dashBoardController.openWidget == true
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.product);
+                                        },
+                                        child: Text(
+                                          StringRes.product,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.productPage);
+                                        },
+                                        child: Text(
+                                          StringRes.productPage,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.invoice);
+                                        },
+                                        child: Text(
+                                          StringRes.invoice,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.cart);
+                                        },
+                                        child: Text(
+                                          StringRes.cart,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.checkOut);
+                                        },
+                                        child: Text(
+                                          StringRes.checkOut,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          indexWiseNavigation(
+                                              index: StringRes.pricing);
+                                        },
+                                        child: Text(
+                                          StringRes.pricing,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
+                        //  Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       dashBoardController.selectedMainCategory= StringRes.eCommerce;
+                        //       setState(() {
+                        //
+                        //       });
+                        //     },
+                        //     child: Row(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Icon(
+                        //           Icons.delete_outlined,
+                        //           size: 17,
+                        //           color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
+                        //         ),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         Column(
+                        //           mainAxisAlignment: MainAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               StringRes.eCommerce,
+                        //               textAlign: TextAlign.start,
+                        //               style: TextStyle(
+                        //                   fontWeight: FontWeight.bold,
+                        //                   fontSize: 12,
+                        //                 color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
+                        //
+                        //               ),
+                        //             ),
+                        //
+                        //           ],
+                        //         ),
+                        //         Spacer(),
+                        //
+                        //         Icon(
+                        //           Icons.arrow_drop_up_sharp,
+                        //           color:     dashBoardController.selectedMainCategory== StringRes.eCommerce?Colors.blueAccent: Colors.black,
+                        //
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 10,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-
-
-                               dashBoardController.selectedMainCategory = StringRes.chat;
-                               indexWiseNavigation(index: StringRes.chat);
-                               setState(() {
-
-                               });
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.chat;
+                              indexWiseNavigation(index: StringRes.chat);
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -421,7 +668,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.chat,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.chat? Colors.blueAccent:Colors.black,
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.chat
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -431,14 +682,15 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   children: [
                                     Text(
                                       StringRes.chat,
-
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-
-                                        color:      dashBoardController.selectedMainCategory == StringRes.chat? Colors.blueAccent:Colors.black,
-
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: dashBoardController
+                                                    .selectedMainCategory ==
+                                                StringRes.chat
+                                            ? Colors.blueAccent
+                                            : Colors.black,
                                       ),
                                     ),
                                   ],
@@ -452,53 +704,189 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             height: 10,
                           ),
                         ),
+                        ///
+
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                            onTap: () {
-                              dashBoardController.selectedMainCategory=StringRes.users;
-                              setState(() {
-
-                              });
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.people,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.person,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.users? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                      .selectedMainCategory ==
+                                      'user'
+                                      ? Colors.blueAccent
+                                      : Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  dashBoardController.selectedMainCategory =
+                                  'user';
+                                  setState(() {
+                                    if (dashBoardController.selectUser ==
+                                        true) {
+                                      dashBoardController.selectUser = false;
+                                    } else {
+                                      dashBoardController.selectUser = true;
+                                    }
+                                  });
+                                },
+                                child: Text(
+                                  StringRes.users,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: dashBoardController
+                                          .selectedMainCategory ==
+                                          'user'
+                                          ? Colors.blueAccent
+                                          : Colors.black),
                                 ),
+                              ),
+                              Spacer(),
+                              Icon(
+                                  dashBoardController.selectUser == true
+                                      ? Icons.arrow_drop_down_sharp
+                                      : Icons.arrow_drop_up_sharp,
+                                  color: dashBoardController
+                                      .selectedMainCategory ==
+                                      'user'
+                                      ? Colors.blueAccent
+                                      : Colors.black),
+                            ],
+                          ),
+                        ),
+                        dashBoardController.selectedMainCategory == 'user' &&
+                            dashBoardController.selectUser == true
+                            ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
                                 SizedBox(
-                                  width: 10,
+                                  width: 25,
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      StringRes.users,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-
-                                        color:      dashBoardController.selectedMainCategory == StringRes.users? Colors.blueAccent:Colors.black,
-
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.arrow_drop_up_sharp,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.users? Colors.blueAccent:Colors.black,
-
+                                GestureDetector(
+                                  onTap: () {
+                                    indexWiseNavigation(
+                                        index: StringRes.userProfile);
+                                  },
+                                  child: Text(
+                                    StringRes.userProfile,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 11),
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    indexWiseNavigation(
+                                        index: StringRes.userEdit);
+                                  },
+                                  child: Text(
+                                    StringRes.userEdit,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 11),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    indexWiseNavigation(
+                                        index: StringRes.userCards);
+                                  },
+                                  child: Text(
+                                    StringRes.userCards,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 11),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                            : SizedBox(),
+
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       dashBoardController.selectedMainCategory =
+                        //           StringRes.users;
+                        //       setState(() {});
+                        //     },
+                        //     child: Row(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Icon(
+                        //           Icons.people,
+                        //           size: 17,
+                        //           color: dashBoardController
+                        //                       .selectedMainCategory ==
+                        //                   StringRes.users
+                        //               ? Colors.blueAccent
+                        //               : Colors.black,
+                        //         ),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         Column(
+                        //           mainAxisAlignment: MainAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               StringRes.users,
+                        //               textAlign: TextAlign.start,
+                        //               style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 12,
+                        //                 color: dashBoardController
+                        //                             .selectedMainCategory ==
+                        //                         StringRes.users
+                        //                     ? Colors.blueAccent
+                        //                     : Colors.black,
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //         Spacer(),
+                        //         Icon(
+                        //           Icons.arrow_drop_up_sharp,
+                        //           color: dashBoardController
+                        //                       .selectedMainCategory ==
+                        //                   StringRes.users
+                        //               ? Colors.blueAccent
+                        //               : Colors.black,
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        ///
                         Expanded(
                           child: SizedBox(
                             height: 15,
@@ -531,10 +919,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory = StringRes.forms;
-                              setState(() {
-
-                              });
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.forms;
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -542,8 +929,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.file_copy_outlined,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.forms? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.forms
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -555,9 +945,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       StringRes.forms,
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        color:      dashBoardController.selectedMainCategory == StringRes.forms? Colors.blueAccent:Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: dashBoardController
+                                                    .selectedMainCategory ==
+                                                StringRes.forms
+                                            ? Colors.blueAccent
+                                            : Colors.black,
                                       ),
                                     ),
                                   ],
@@ -565,8 +959,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Spacer(),
                                 Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.forms? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.forms
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                               ],
                             ),
@@ -581,19 +978,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory=StringRes.tables;
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.tables;
                               indexWiseNavigation(index: StringRes.tables);
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
                             child: Row(
                               children: [
                                 Icon(
                                   CupertinoIcons.table,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.tables? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.tables
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -602,8 +1001,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   StringRes.tables,
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    color:      dashBoardController.selectedMainCategory == StringRes.tables? Colors.blueAccent:Colors.black,
-                                      fontWeight: FontWeight.bold, fontSize: 12,),
+                                    color: dashBoardController
+                                                .selectedMainCategory ==
+                                            StringRes.tables
+                                        ? Colors.blueAccent
+                                        : Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ],
                             ),
@@ -641,10 +1046,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory= StringRes.authPages;
-                              setState(() {
-
-                              });
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.authPages;
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -652,8 +1056,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.verified_user_rounded,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.authPages? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.authPages
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -665,9 +1072,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       StringRes.authPages,
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        color:      dashBoardController.selectedMainCategory == StringRes.authPages? Colors.blueAccent:Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: dashBoardController
+                                                    .selectedMainCategory ==
+                                                StringRes.authPages
+                                            ? Colors.blueAccent
+                                            : Colors.black,
                                       ),
                                     ),
                                   ],
@@ -675,8 +1086,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Spacer(),
                                 Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.authPages? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.authPages
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                               ],
                             ),
@@ -691,10 +1105,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory= StringRes.uiKits;
-                              setState(() {
-
-                              });
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.uiKits;
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -702,8 +1115,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.signal_cellular_nodata_outlined,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.uiKits? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.uiKits
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -715,9 +1131,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       StringRes.uiKits,
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        color:      dashBoardController.selectedMainCategory == StringRes.uiKits? Colors.blueAccent:Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: dashBoardController
+                                                    .selectedMainCategory ==
+                                                StringRes.uiKits
+                                            ? Colors.blueAccent
+                                            : Colors.black,
                                       ),
                                     ),
                                   ],
@@ -725,8 +1145,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Spacer(),
                                 Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.uiKits? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.uiKits
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                               ],
                             ),
@@ -741,10 +1164,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory= StringRes.buttons;
-                              setState(() {
-
-                              });
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.buttons;
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -752,8 +1174,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.send,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.buttons? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.buttons
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -765,9 +1190,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       StringRes.buttons,
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        color:      dashBoardController.selectedMainCategory == StringRes.buttons? Colors.blueAccent:Colors.black,
-                                          fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: dashBoardController
+                                                    .selectedMainCategory ==
+                                                StringRes.buttons
+                                            ? Colors.blueAccent
+                                            : Colors.black,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ],
@@ -775,8 +1204,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Spacer(),
                                 Icon(
                                   Icons.arrow_drop_up_sharp,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.buttons? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.buttons
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                               ],
                             ),
@@ -814,11 +1246,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: () {
-                              dashBoardController.selectedMainCategory= StringRes.faq;
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.faq;
                               indexWiseNavigation(index: StringRes.faq);
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -826,8 +1257,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                 Icon(
                                   Icons.face,
                                   size: 17,
-                                  color:      dashBoardController.selectedMainCategory == StringRes.faq? Colors.blueAccent:Colors.black,
-
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.faq
+                                      ? Colors.blueAccent
+                                      : Colors.black,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -840,8 +1274,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color:      dashBoardController.selectedMainCategory == StringRes.faq? Colors.blueAccent:Colors.black,
-
+                                          color: dashBoardController
+                                                      .selectedMainCategory ==
+                                                  StringRes.faq
+                                              ? Colors.blueAccent
+                                              : Colors.black,
                                           fontSize: 12),
                                     ),
                                   ],
@@ -850,11 +1287,61 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 40,),
+                        Expanded(
+                          child: SizedBox(
+                            height: 10,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: GestureDetector(
+                            onTap: () {
+                              dashBoardController.selectedMainCategory =
+                                  StringRes.fileManager;
+                              indexWiseNavigation(index: StringRes.fileManager);
+                              setState(() {});
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.file_copy_outlined,
+                                  size: 17,
+                                  color: dashBoardController
+                                              .selectedMainCategory ==
+                                          StringRes.fileManager
+                                      ? Colors.blueAccent
+                                      : Colors.black,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      StringRes.fileManager,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: dashBoardController
+                                                      .selectedMainCategory ==
+                                                  StringRes.fileManager
+                                              ? Colors.blueAccent
+                                              : Colors.black,
+                                          fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
                       ],
                     ),
-
-
                   ),
                 ),
                 Expanded(

@@ -6,38 +6,47 @@ import 'package:responsive_builder/responsive_builder.dart';
 ProductPageController controller = Get.find<ProductPageController>();
 
 Widget productTitle() {
-  return const Row(
-    children: [
-      Text(
-        'Product Page',
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-      ),
-      Spacer(),
-      Icon(
-        Icons.home,
-        size: 18,
-      ),
-      SizedBox(
-        width: 2,
-      ),
-      Text('/'),
-      SizedBox(
-        width: 2,
-      ),
-      Text('E-Commerce'),
-      SizedBox(
-        width: 2,
-      ),
-      Text('/'),
-      SizedBox(
-        width: 2,
-      ),
-      Text(
-        'Product page',
-        style: TextStyle(color: Colors.blue),
-      )
-    ],
+  return row(
+    text: 'Product Page',
+    data: 'Product page',
   );
+}
+
+Row row({required String text,required String data,}) {
+  return  Row(
+  children: [
+    Text(
+      text,
+
+      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+    ),
+    Spacer(),
+    Icon(
+      Icons.home,
+      size: 18,
+    ),
+    SizedBox(
+      width: 2,
+    ),
+    Text('/'),
+    SizedBox(
+      width: 2,
+    ),
+    Text('E-Commerce'),
+    SizedBox(
+      width: 2,
+    ),
+    Text('/'),
+    SizedBox(
+      width: 2,
+    ),
+    Text(
+      data,
+
+      style: TextStyle(color: Colors.blue),
+    )
+  ],
+);
 }
 Widget listProduct(){
   return ResponsiveBuilder(

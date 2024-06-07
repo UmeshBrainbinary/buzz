@@ -8,6 +8,8 @@ class DashBoardController extends GetxController{
   String   selectedMainCategory= 'Dashboards';
 
   bool isOpenWidgets= false;
+  bool openWidget = false;
+  bool selectUser = false;
 
 
   final List GENERAL = [

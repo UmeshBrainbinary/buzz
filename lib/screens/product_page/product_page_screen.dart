@@ -1,7 +1,6 @@
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_controller.dart';
 import 'package:buzz/screens/product_page/widget/product_page_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
