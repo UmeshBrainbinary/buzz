@@ -335,7 +335,6 @@ class Chartscreen extends StatelessWidget {
                             width: 1,
                             color: ColorRes.gray.withOpacity(0.5),
                           ),
-                          sizingInformation.isTablet||   sizingInformation.isMobile?
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -473,7 +472,7 @@ class Chartscreen extends StatelessWidget {
 
                               ],
                             ),
-                          ):SizedBox()
+                          )
                         ],
                       ),
                       decoration: BoxDecoration(
