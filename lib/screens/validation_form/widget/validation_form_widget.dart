@@ -1,13 +1,10 @@
-import 'package:buzz/screens/user_edit/user_edit_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-UserEditController controller = Get.find<UserEditController>();
-
-Widget textField(
+Widget textFieldValidation(
     {required TextEditingController controller,
-    required String text,
-    String? hintText}) {
+      required String text,
+      String? hintText,Widget? prefixIcon,
+      String? Function(String?)? validator}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -17,9 +14,11 @@ Widget textField(
       ),
       SizedBox(
         height: 40,
-        child: TextField(
+        child: TextFormField(
           controller: controller,
+          validator: validator,
           decoration: InputDecoration(
+            prefixIcon: prefixIcon,
               hintText: hintText,
               hintStyle: const TextStyle(color: Colors.grey),
               border: OutlineInputBorder(
@@ -31,10 +30,11 @@ Widget textField(
   );
 }
 
-Widget buildDropdownButton(
+
+Widget buildDropdownButtonValidation(
     {required String? value,
-    required List<DropdownMenuItem<String>>? items,
-    required void Function(String?)? onChanged}) {
+      required List<DropdownMenuItem<String>>? items,
+      required void Function(String?)? onChanged}) {
   return Container(
     height: 40,
     decoration: BoxDecoration(

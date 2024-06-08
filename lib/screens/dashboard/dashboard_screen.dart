@@ -7,6 +7,7 @@ import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/pricing/pricing_screen.dart';
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_screen.dart';
+import 'package:buzz/screens/user_cards/user_card_screen.dart';
 import 'package:buzz/screens/user_edit/user_edit_screen.dart';
 import 'package:buzz/screens/user_profile/user_profile_screen.dart';
 import 'package:buzz/utils/string.dart';
@@ -107,7 +108,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       Get.offAll(
           transition: Transition.noTransition,
           () => DashBoardScreen(
-              child: Text('card'), screenName: 'Users'));
+              child: UserCardScreen(), screenName: 'Users'));
     }
   }
 

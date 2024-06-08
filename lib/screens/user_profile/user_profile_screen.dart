@@ -113,9 +113,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
       child: TabBar(
         controller: tabController,
         tabs: [
-          Tab(text: 'Profile'),
-          Tab(text: 'Network'),
-          Tab(text: 'Subscription'),
+          const Tab(text: 'Profile'),
+          const Tab(text: 'Network'),
+          const Tab(text: 'Subscription'),
         ],
       ),
     );
@@ -124,7 +124,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf2f4f6),
+      backgroundColor: const Color(0xFFf2f4f6),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -144,7 +144,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 30,
                     bottom: -30,
                     child: CircleAvatar(
@@ -154,18 +154,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
                   ),
                 ],
               ),
-              SizedBox(height: 40),
-              Row(
+              const SizedBox(height: 40),
+              const Row(
                 children: [
                   Text('Eloan musk'),
                   SizedBox(width: 20),
                   Icon(Icons.cloud_done_rounded,color: Colors.blue,),
                 ],
               ),
-              SizedBox(height: 10,),
-              Text(StringRes.eloan),
-              SizedBox(height: 10,),
-              Row(
+              const SizedBox(height: 10,),
+              const Text(StringRes.eloan),
+              const SizedBox(height: 10,),
+              const Row(
                 children: [
                   Icon(Icons.card_giftcard),
                   SizedBox(width: 10,),
@@ -176,7 +176,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
                   Text(StringRes.vivian,style: TextStyle(color: Colors.blue),),
                 ],
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
              Container(
                decoration: BoxDecoration(
                  borderRadius: BorderRadius.circular(10),
@@ -188,7 +188,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> with SingleTicker
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      tabContainer1(),
-                     SizedBox(height: 20,),
+                     const SizedBox(height: 20,),
                      SizedBox(
                        height: 900, // Ensure the TabBarView has some height to be visible
                        child: TabBarView(

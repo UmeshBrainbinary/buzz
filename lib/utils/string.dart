@@ -22,6 +22,7 @@ class StringRes {
   static const String chat = 'Chat';
   static const String price = 'Price';
   static const String users = 'Users';
+  static const String validationForm = 'Validation Form';
   static const String application = 'Applications';
   static const String formsTable = 'Forms & Table';
   static const String forms = 'Forms';
@@ -36,6 +37,7 @@ class StringRes {
   static const String checkOut = 'Checkout';
   static const String pricing = 'Pricing';
   static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
   static const String phone = 'Phone';
   static const String email = 'Email Address';
   static const String country = 'Country';
@@ -60,4 +62,25 @@ class StringRes {
   static const String live = 'Live in:';
   static const String from = 'From:';
   static const String myProfile = 'My Profile';
+  static const String password = 'Password';
+  static const String website = 'Website';
+  static const String save = 'Save';
+  static const String edit = 'Edit Profile';
+  static const String mobile = 'Mobile Number';
+  static const String emailId = 'Email Id';
+  static const String company = 'Company';
+  static const String zipCode = 'Zip Code';
+  static const String homeTown = 'Home Town';
+  static const String cityEdit = 'City';
+  static const String countryEdit = 'Country';
+  static const String about = 'About Me';
+  static const String updateProfile = 'Update Profile';
+  static const String description = 'Description';
+  static const String digits = 'Digits';
+  static const String number = 'Number';
+  static const String userName = 'Username';
+  static const String terms = 'Agree to terms and condition';
+  static const String checkMeOut = 'Check Me Out';
+  static const String submit = 'Submit';
+
 }
