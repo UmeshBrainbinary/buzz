@@ -82,5 +82,21 @@ class StringRes {
   static const String terms = 'Agree to terms and condition';
   static const String checkMeOut = 'Check Me Out';
   static const String submit = 'Submit';
+  static const String menulevel = 'Menu Level';
+  static const String level1 = 'Level 1.1';
+  static const String level2 = 'Level 1.2';
+  static const String DefaultStyle = 'Default Style';
+  static const String  FlatStyle = 'Flat Style';
+  static const String  EdgeStyle = 'Edge Style';
+  static const  String   raiseStyle = 'Raised Style';
+  static const  String   avatars = 'Avatar';
+  static const  String   statusindicator   = 'status indicator';
+  static const  String   grouping = 'Grouping';
+  static const  String   sizes = 'Sizes';
+  static const  String   modal = 'Modal';
+  static const  String   simple= 'Simple';
+  static const  String   scrollingcontent = 'Scrolling Content';
+
+
 
 }

@@ -10,6 +10,8 @@ class DashBoardController extends GetxController{
   bool isOpenWidgets= false;
   bool openWidget = false;
   bool selectUser = false;
+  bool Menulevel = false;
+  bool buttons = false;
 
 
   final List GENERAL = [
