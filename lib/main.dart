@@ -1,5 +1,7 @@
+
 import 'package:buzz/screens/cart/cart_screen.dart';
 import 'package:buzz/screens/checkout/checkout_screen.dart';
+
 import 'package:buzz/screens/dashboard/dashboard_screen.dart';
 import 'package:buzz/screens/faq/faq_screen.dart';
 import 'package:buzz/screens/invoice/invoice_screen.dart';
@@ -13,6 +15,10 @@ import 'package:buzz/screens/validation_form/validation_form_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'screens/Buttons/Defult_style/default_style_screen.dart';
+import 'screens/Buttons/Flat_buttons/flatbuttons_screen.dart';
+import 'screens/Buttons/Raised_buttons/Raisedbuttons_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,8 +44,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-
-      // home: const FaqScreen(),
 
       // home: DashBoardScreen(
       //   child: const Text('main'),
