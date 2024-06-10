@@ -82,5 +82,6 @@ class StringRes {
   static const String terms = 'Agree to terms and condition';
   static const String checkMeOut = 'Check Me Out';
   static const String submit = 'Submit';
+  static const String cancel = 'Cancel';
 
 }

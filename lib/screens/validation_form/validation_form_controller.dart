@@ -1,4 +1,6 @@
+import 'package:buzz/screens/cart/cart_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ValidationController extends GetxController{
@@ -14,6 +16,20 @@ class ValidationController extends GetxController{
   TextEditingController rangeController = TextEditingController();
   TextEditingController userController = TextEditingController();
   TextEditingController password = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  String? validateUsername(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your username';
+    }
+    return null;
+  }
+
+  void onTapSubmitForm(context){
+    if(formKey.currentState!.validate() && value.value){
+   Get.to(CartScreen());
+    }
+  }
 
 
   var dropdownValueNumber = 'select Menu 1'.obs;

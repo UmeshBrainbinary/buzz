@@ -1,5 +1,6 @@
 import 'package:buzz/screens/cart/card_controller.dart';
 import 'package:buzz/utils/string.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,169 +48,164 @@ Widget productTable(){
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Card(
-                color: Colors.white,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(child: Text('Shopping Cart',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
-                        SizedBox(height: 20,),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Table(
-                            border: TableBorder.all(color: Colors.grey,width: 0.5,borderRadius: BorderRadius.circular(10)),
-                            columnWidths: const {
-                              0: FixedColumnWidth(200.0),
-                              1: FixedColumnWidth(200.0),
-                              2: FixedColumnWidth(200.0),
-                              3: FixedColumnWidth(200.0),
-                              4: FixedColumnWidth(200.0),
-                              5: FixedColumnWidth(200.0),
-                            },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white
+                ),
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(child: Text('Shopping Cart',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
+                    SizedBox(height: 20,),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Table(
+                        border: TableBorder.all(color: Colors.grey,width: 0.5,borderRadius: BorderRadius.circular(10)),
+                        columnWidths: const {
+                          0: FixedColumnWidth(200.0),
+                          1: FixedColumnWidth(200.0),
+                          2: FixedColumnWidth(200.0),
+                          3: FixedColumnWidth(200.0),
+                          4: FixedColumnWidth(200.0),
+                          5: FixedColumnWidth(200.0),
+                        },
+                        children: [
+                          TableRow(
                             children: [
-                              TableRow(
-                                children: [
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Product',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Product Name',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Price',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Quantity',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Action',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                  TableCell(child: SizedBox(
-                                      height: 50,
-                                      width: 200,
-                                      child: Center(child: Text('Total',style: TextStyle(fontWeight: FontWeight.bold),)))),
-                                ],
-                              ),
-                              ...productController.products.map((product) {
-                                return TableRow(
-                                  children: [
-                                    TableCell(
-                                      child: SizedBox(
-                                        height: 180,
-                                        width: 180,
-                                        child: Center(
-                                          child: Image.asset(product.image, width: 100, height: 100),
-                                        ),
-                                      ),
-                                    ),
-                                    TableCell(child: SizedBox(
-                                        height: 180,
-                                        width: 180,
-                                        child: Center(child: Text(product.name)))),
-                                    TableCell(child: SizedBox(
-                                        height: 180,
-                                        width: 180,
-                                        child: Center(child: Text('\$${product.price}')))),
-                                    TableCell(
-                                      child: SizedBox(
-                                        height: 180,
-                                        width: 200,
-                                        child: Center(
-                                          child: Container(
-                                            width: 120,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10),
-                                              color: Colors.black12
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top: 8.0,bottom: 8,left: 8),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(50),
-                                                      color: Colors.white
-                                                    ),
-                                                    child: IconButton(
-                                                      icon: Icon(Icons.remove),
-                                                      onPressed: () {
-                                                        if (product.quantity.value > 0) {
-                                                          product.quantity.value--;
-                                                        }
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                                Spacer(),
-                                                Obx(() => Text('${product.quantity.value}')),
-                                                Spacer(),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top: 8.0,bottom: 8,right: 8),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(50),
-                                                        color: Colors.white
-                                                    ),
-                                                    child: IconButton(
-                                                      icon: Icon(Icons.add),
-                                                      onPressed: () {
-                                                        product.quantity.value++;
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    TableCell(
-                                      child: SizedBox(
-                                        height: 180,
-                                        width: 180,
-                                        child: Center(
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                                             Icon(Icons.edit),
-                                            Icon(Icons.favorite),
-                                            Icon(Icons.delete_outlined)
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    TableCell(child: SizedBox(
-                                        height: 180,
-                                        width: 180,
-                                        child: Center(child: Text('\$${product.total}')))),
-                                  ],
-                                );
-                              }).toList(),
-                              _buildTotalRow(),
-                              buildContainer(),
-
-
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Product',style: TextStyle(fontWeight: FontWeight.bold),)))),
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Product Name',style: TextStyle(fontWeight: FontWeight.bold),)))),
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Price',style: TextStyle(fontWeight: FontWeight.bold),)))),
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Quantity',style: TextStyle(fontWeight: FontWeight.bold),)))),
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Action',style: TextStyle(fontWeight: FontWeight.bold),)))),
+                              TableCell(child: SizedBox(
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(child: Text('Total',style: TextStyle(fontWeight: FontWeight.bold),)))),
                             ],
                           ),
-                        ),
-                      ],
+                          ...productController.products.map((product) {
+                            return TableRow(
+                              children: [
+                                TableCell(
+                                  child: SizedBox(
+                                    height: 180,
+                                    width: 180,
+                                    child: Center(
+                                      child: Image.asset(product.image, width: 100, height: 100),
+                                    ),
+                                  ),
+                                ),
+                                TableCell(child: SizedBox(
+                                    height: 180,
+                                    width: 180,
+                                    child: Center(child: Text(product.name)))),
+                                TableCell(child: SizedBox(
+                                    height: 180,
+                                    width: 180,
+                                    child: Center(child: Text('\$${product.price}')))),
+                                TableCell(
+                                  child: SizedBox(
+                                    height: 180,
+                                    width: 200,
+                                    child: Center(
+                                      child: Container(
+                                        width: 120,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: Colors.black12
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0,bottom: 8,left: 8),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(50),
+                                                  color: Colors.white
+                                                ),
+                                                child: IconButton(
+                                                  icon: Icon(Icons.remove),
+                                                  onPressed: () {
+                                                    if (product.quantity.value > 0) {
+                                                      product.quantity.value--;
+                                                    }
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Obx(() => Text('${product.quantity.value}')),
+                                            Spacer(),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0,bottom: 8,right: 8),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(50),
+                                                    color: Colors.white
+                                                ),
+                                                child: IconButton(
+                                                  icon: Icon(Icons.add),
+                                                  onPressed: () {
+                                                    product.quantity.value++;
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                TableCell(
+                                  child: SizedBox(
+                                    height: 180,
+                                    width: 180,
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                                         Icon(Icons.edit),
+                                        Icon(Icons.favorite),
+                                        Icon(Icons.delete_outlined)
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                TableCell(child: SizedBox(
+                                    height: 180,
+                                    width: 180,
+                                    child: Center(child: Text('\$${product.total}')))),
+                              ],
+                            );
+                          }).toList(),
+                          _buildTotalRow(),
+                          buildContainer(),
+
+
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
