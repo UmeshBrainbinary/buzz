@@ -1,4 +1,6 @@
 
+import 'package:buzz/screens/Avatar/Avatar_screen.dart';
+import 'package:buzz/screens/Notification/Notification_Screen.dart';
 import 'package:buzz/screens/cart/cart_screen.dart';
 import 'package:buzz/screens/checkout/checkout_screen.dart';
 
@@ -19,6 +21,7 @@ import 'package:get/get.dart';
 import 'screens/Buttons/Defult_style/default_style_screen.dart';
 import 'screens/Buttons/Flat_buttons/flatbuttons_screen.dart';
 import 'screens/Buttons/Raised_buttons/Raisedbuttons_Screen.dart';
+import 'screens/Modal/Modal_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +52,8 @@ class MyApp extends StatelessWidget {
       //   child: const Text('main'),
       //   screenName: 'Dashboards',
       // ),
-      home: DashBoardScreen(
+      home:
+      DashBoardScreen(
         child: ValidationFormScreen(),
         screenName: 'user',
       ),

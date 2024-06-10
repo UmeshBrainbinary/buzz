@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class Commoncontainer extends StatelessWidget {
+class CommoncontainerNotificitons extends StatelessWidget {
   final String buttonname;
   final  Widgets;
-  Commoncontainer({super.key, this.Widgets, required this.buttonname});
+  CommoncontainerNotificitons({super.key, this.Widgets, required this.buttonname});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class Commoncontainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(buttonname,  style: TextStyle(
-                      fontSize: 23,
+                      fontSize: 19,
                       color: ColorRes.black,
-                      fontWeight: FontWeight.bold),),
+                     ),),
                   Icon(Icons.settings,color: ColorRes.blue,)
                 ],
               ),
@@ -38,11 +38,11 @@ class Commoncontainer extends StatelessWidget {
               Container(
                 height: 2,
                 width: double.infinity,
-                color: ColorRes.textcolor.withOpacity(0.5),
+                color: ColorRes.gray.withOpacity(0.5),
               ),
               SizedBox(height: 20,),
-                Widgets
 
+              Widgets
 
 
             ],
