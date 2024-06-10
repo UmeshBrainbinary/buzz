@@ -16,12 +16,21 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+  bool isHovered = false;
   final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return InkWell(
+      onTap: () {
+
+      },
+      onHover: (value) {
+        setState(() {
+          isHovered = value;
+        });
+      },
       child: Card(
         color: Colors.white,
         child: Container(
@@ -47,62 +56,60 @@ class _ProductCardState extends State<ProductCard> {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  widget.product.isLiked == true
-                      ? Container(
-                          width: double.infinity,
-                          height: size.width < 600 ? 120 : 200,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.black26,
-                          ),
-                        )
-                      : const SizedBox(),
-                  widget.product.isLiked == true
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white),
-                                child: const Icon(Icons.remove_red_eye)),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                dialogImage(context);
-                              },
-                              child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.white),
-                                  child: const Icon(Icons.shopping_cart)),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                // controller.tap =!controller.tap;
-                              },
-                              child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.white),
-                                  child: Icon(productController.tap
-                                      ? Icons.favorite_border
-                                      : Icons.favorite)),
-                            ),
-                          ],
-                        )
-                      : const SizedBox(),
+                  if (isHovered)
+                    Container(
+                      width: double.infinity,
+                      height: size.width < 600 ? 120 : 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black26,
+                      ),
+                    ),
+                  if (isHovered)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.white),
+                            child: const Icon(Icons.remove_red_eye)),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            dialogImage(context);
+                          },
+                          child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white),
+                              child: const Icon(Icons.shopping_cart)),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            // controller.tap =!controller.tap;
+                          },
+                          child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white),
+                              child: Icon(productController.tap
+                                  ? Icons.favorite_border
+                                  : Icons.favorite)),
+                        ),
+                      ],
+                    ),
                 ],
               ),
               const SizedBox(
