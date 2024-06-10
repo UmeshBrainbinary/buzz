@@ -131,7 +131,7 @@ Widget listProduct(){
                         DeviceScreenType.mobile?20:40,
                       width: sizingInformation.deviceScreenType ==
                           DeviceScreenType.mobile?20:40,
-                      image: 'assets/images/girls.png',),
+                      image: 'assets/images/google.png',),
                   SizedBox(
                     width: 10,
                   ),
@@ -140,7 +140,7 @@ Widget listProduct(){
                         DeviceScreenType.mobile?20:40,
                       width: sizingInformation.deviceScreenType ==
                           DeviceScreenType.mobile?20:40,
-                      image: 'assets/images/girls.png'),
+                      image: 'assets/images/wifi.jpeg'),
                   SizedBox(
                     width: 10,
                   ),
@@ -158,7 +158,7 @@ Widget listProduct(){
                           DeviceScreenType.mobile?20:40,
                       width: sizingInformation.deviceScreenType ==
                           DeviceScreenType.mobile?20:40,
-                      image: 'assets/images/girls.png'),
+                      image: 'assets/images/instagram.jpeg'),
                   SizedBox(
                     width: 10,
                   ),
@@ -167,7 +167,7 @@ Widget listProduct(){
                           DeviceScreenType.mobile?20:40,
                       width: sizingInformation.deviceScreenType ==
                           DeviceScreenType.mobile?20:40,
-                      image: 'assets/images/girls.png'),
+                      image: 'assets/images/twitter.png'),
                   SizedBox(
                     width: 10,
                   ),
@@ -316,9 +316,12 @@ Container buildContainer({required String image,double? height,double? width}) {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         border: Border.all(color: Colors.grey)),
-    child: Image.asset(
-      image,
-      fit: BoxFit.fill,
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(100),
+      child: Image.asset(
+        image,
+        fit: BoxFit.fill,
+      ),
     ),
   );
 }

@@ -112,27 +112,27 @@ Future dialogImage(BuildContext context) {
                 width: sizingInformation.deviceScreenType ==
                         DeviceScreenType.mobile
                     ? 410
-                    : 550,
+                    : 520,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                 ),
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                         height: sizingInformation.deviceScreenType ==
                             DeviceScreenType.mobile? 200:300,
                         width: sizingInformation.deviceScreenType ==
                             DeviceScreenType.mobile?100:200,
                         child: Image.asset('assets/images/girls.png',fit: BoxFit.fill,),),
                     const SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
                     Stack(
                       children: [
                          Positioned(
                           top: 10,
-                            right: 5,
+                            right: 0,
                             child: GestureDetector(
                                 onTap: () {
                                   Get.back();

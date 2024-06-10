@@ -6,6 +6,7 @@ class ProductController extends GetxController {
    Product? product;
 bool _tap = false;
 
+
   bool get tap => _tap;
 
   set tap(bool value) {
@@ -22,13 +23,13 @@ bool _tap = false;
   void fetchProducts() {
     var products = [
       Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
+      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/images.jpeg', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
+      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/shoping.jpeg', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
       Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
+      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/images.jpeg', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
+      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/shoping.jpeg', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
       Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
-      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
-      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
-      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
-      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
-      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/girls.png', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
+      Product(name: 'Woman T-shirt', imageUrl: 'assets/images/images.jpeg', price: 26.00, rating: 3.0,subName:'Denim jacket' ),
 
       // Add more products here
     ];

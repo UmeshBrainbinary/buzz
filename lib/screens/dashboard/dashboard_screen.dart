@@ -1,3 +1,4 @@
+import 'package:buzz/hour.dart';
 import 'package:buzz/screens/cart/cart_screen.dart';
 import 'package:buzz/screens/checkout/checkout_screen.dart';
 import 'package:buzz/screens/dashboard/dashboard_controller.dart';
@@ -37,7 +38,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       Get.offAll(
           transition: Transition.noTransition,
           () => DashBoardScreen(
-              child: Text('dashBoard'), screenName: 'DashBoards'));
+              child: ProductList1(), screenName: 'DashBoards'));
     } else if (index == StringRes.general) {
       Get.offAll(
           transition: Transition.noTransition,

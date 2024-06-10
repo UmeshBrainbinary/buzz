@@ -34,6 +34,7 @@ Widget containerUser() {
             
                                   CircleAvatar(
                                     radius: 20,
+                                    backgroundImage: AssetImage('assets/images/user.png'),
                                   ),
                                   SizedBox(width: 20,),
                                   Column(

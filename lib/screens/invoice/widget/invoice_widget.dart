@@ -189,6 +189,7 @@ Widget invoiceText() {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               container(text: 'Print',color: Colors.deepPurpleAccent,colors: Colors.white),
+              SizedBox(width: 10,),
               container(text: 'Cancel',color: Colors.pink,colors: Colors.white),
             ],
           ),
