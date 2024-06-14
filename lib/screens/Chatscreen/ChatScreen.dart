@@ -7,8 +7,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../utils/strings.dart';
 
-class Chartscreen extends StatelessWidget {
-  Chartscreen({super.key});
+class Chatscreen extends StatelessWidget {
+  Chatscreen({super.key});
 
   final List<Map<String, String>> items = [
     {

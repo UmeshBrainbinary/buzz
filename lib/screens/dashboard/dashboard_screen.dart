@@ -10,6 +10,7 @@ import 'package:buzz/screens/Chatscreen/ChatScreen.dart';
 import 'package:buzz/screens/Menu%20Level/Level_1/level_1_1.dart';
 
 import 'package:buzz/screens/cart/cart_screen.dart';
+import 'package:buzz/screens/chart_module/chart_screen.dart';
 import 'package:buzz/screens/checkout/checkout_screen.dart';
 import 'package:buzz/screens/dashboard/dashboard_controller.dart';
 import 'package:buzz/screens/faq/faq_screen.dart';
@@ -60,7 +61,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     } else if (index == StringRes.charts) {
       Get.offAll(
           transition: Transition.noTransition,
-              () => DashBoardScreen(child: Text('charts'), screenName: 'Project'));
+              () => DashBoardScreen(screenName: 'Chart', child: const Chartscreen()));
     } else if (index == StringRes.faq) {
       Get.offAll(
           transition: Transition.noTransition,
@@ -73,7 +74,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     } else if (index == StringRes.chat) {
       Get.offAll(
           transition: Transition.noTransition,
-              () => DashBoardScreen(child: Chartscreen(), screenName: 'E-Commerce'));
+              () => DashBoardScreen(child: Chatscreen(), screenName: 'E-Commerce'));
     } else if (index == StringRes.product) {
       Get.offAll(
           transition: Transition.noTransition,

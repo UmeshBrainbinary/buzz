@@ -6,6 +6,7 @@ class Strings {
 
   ///---------------------------------------- Home screen ----------------------------------------
   static const chart = 'Chat';
+  static const chart2 = 'Chart';
   static const app = 'App';
   static const Serch= 'Search...';
   static const Onine = 'Oniline';

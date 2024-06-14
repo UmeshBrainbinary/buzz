@@ -42,7 +42,7 @@ Widget cartTitle() {
   );
 }
 
-Widget productTable(){
+Widget  productTable(){
   return Obx(
         () => Row(
           crossAxisAlignment: CrossAxisAlignment.start,
