@@ -61,7 +61,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     } else if (index == StringRes.charts) {
       Get.offAll(
           transition: Transition.noTransition,
-              () => DashBoardScreen(screenName: 'Chart', child: const Chartscreen()));
+              () => DashBoardScreen(screenName: 'Chart', child:  ChartScreen()));
     } else if (index == StringRes.faq) {
       Get.offAll(
           transition: Transition.noTransition,

@@ -109,7 +109,7 @@ class UserEditScreen extends StatelessWidget {
                                 );
                               }).toList(),
                               onChanged: (value) {
-                                controller.dropdownChangeYear(value);
+                                controller.dropdownChangeNumber(value);
                               },
                             ),
                           ),

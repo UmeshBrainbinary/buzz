@@ -221,8 +221,8 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       Row(
                         children: [
-                          Spacer(),
-                          Text(
+                          const Spacer(),
+                          const Text(
                             StringRes.showProduct,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 12),

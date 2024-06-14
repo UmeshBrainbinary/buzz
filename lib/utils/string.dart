@@ -101,5 +101,12 @@ class StringRes {
   static const  String   scrollingcontent = 'Scrolling Content';
 
 
+/// ---------------------- chart screen ----------------- ///
+
+static const String totalSale = "Total Sale";
+static const String totalProject = "Total Project";
+static const String monthlyHistory = "Monthly History";
+static const String skillStatus = 'Skill Status';
+static const String liveProduct = 'Live Product';
 
 }

@@ -22,6 +22,8 @@ class ColorRes {
   static const white = Color(0xFFFFFFFF);
   static const lightPurple = Color(0xFFC7C2FF);
   static const darkPurple = Color(0xFF7D70FF);
+  static const lightRed = Color(0xFFF9A6AA);
+  static const darkRed = Color(0xFFEC1B26);
 
 
 
