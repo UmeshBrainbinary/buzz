@@ -1,4 +1,5 @@
 import 'package:buzz/screens/product_page/product_page_controller.dart';
+import 'package:buzz/utils/Color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -21,24 +22,21 @@ Row row({required String text,required String data,}) {
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
     ),
     Spacer(),
-    Icon(
-      Icons.home,
-      size: 18,
-    ),
+    Icon(Icons.home_outlined, color: ColorRes.gray),
     SizedBox(
-      width: 2,
+      width: 10,
     ),
     Text('/'),
     SizedBox(
-      width: 2,
+      width: 10,
     ),
     Text('E-Commerce'),
     SizedBox(
-      width: 2,
+      width: 10,
     ),
     Text('/'),
     SizedBox(
-      width: 2,
+      width: 10,
     ),
     Text(
       data,

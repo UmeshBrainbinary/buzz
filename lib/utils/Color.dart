@@ -5,6 +5,7 @@ class ColorRes {
   static const black = Colors.black;
   static const gray = Colors.grey;
   static const blue = Color(0xFF2D59E7);
+  static const lightBlue = Color(0xFFD9E2FA);
   static const textcolor =Color(0xFFB9B9C2);
   static const background =Color(0xFFF2F2F5);
   static const purple =Color(0xFF7E72FF);
@@ -24,6 +25,13 @@ class ColorRes {
   static const darkPurple = Color(0xFF7D70FF);
   static const lightRed = Color(0xFFF9A6AA);
   static const darkRed = Color(0xFFEC1B26);
+  static const lightPink = Color(0xFFFBCDF3);
+  static const darkPink = Color(0xFFFF11D6);
+  static const lightOrange = Color(0xFFFCCBC8);
+  static const darkOrange = Color(0xFFFC3529);
+  static const lightPerot = Color(0xFFC4FCC7);
+  static const darkPerot = Color(0xFF53FC5C);
+  static const lightSky = Color(0xFFD0DEF7);
 
 
 

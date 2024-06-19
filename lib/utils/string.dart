@@ -14,7 +14,6 @@ class StringRes {
   static const String showProduct = '''Showing product 1-24 of 200 products''';
 
   static const String general = 'General';
-  static const String dashboards = 'Dashboards';
   static const String widgetss = 'Widgets';
   static const String charts = 'Charts';
   static const String projects = 'Projects';
@@ -108,5 +107,32 @@ static const String totalProject = "Total Project";
 static const String monthlyHistory = "Monthly History";
 static const String skillStatus = 'Skill Status';
 static const String liveProduct = 'Live Product';
+
+/// ----------------- home screen ---------------- ///
+
+  static const String dashboards = 'Dashboards';
+  static const String defaultDashboard = 'Default';
+  static const String totalEarning = 'Total Earning';
+  static const String customer = 'Customer';
+  static const String order = 'Orders';
+  static const String availableBalance = 'Available Balance';
+  static const String countries = 'Top Countries';
+  static const String india = 'India';
+  static const String argentines = 'Argentines';
+  static const String brazil = 'Brazil';
+  static const String germany = 'Germany';
+  static const String united = 'United States';
+  static const String activity = 'Recent Activity';
+  static const String more = 'See more';
+  static const String onTheGo = 'On The Go';
+  static const String downloadApp = 'Download\nYour Buzz.\nApp fast ';
+  static const String download = 'Download';
+  static const String available = 'Available for Android and ios';
+  static const String earning = 'Total Earnings';
+  static const String sale = 'Total Sale';
+  static const String profit = 'Total Profit';
+  static const String orders = 'Total Order';
+
+
 
 }

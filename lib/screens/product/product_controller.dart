@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   var productList = <Product>[].obs;
-   Product? product;
+
 bool _tap = false;
 
 

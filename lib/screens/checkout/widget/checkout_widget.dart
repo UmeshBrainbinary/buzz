@@ -1,4 +1,5 @@
 import 'package:buzz/screens/checkout/checkout_controller.dart';
+import 'package:buzz/utils/Color.dart';
 import 'package:buzz/utils/string.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,24 +14,21 @@ Widget checkOutTitle() {
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       Spacer(),
-      Icon(
-        Icons.home,
-        size: 18,
-      ),
+      Icon(Icons.home_outlined, color: ColorRes.gray),
       SizedBox(
-        width: 2,
+        width: 10,
       ),
       Text('/'),
       SizedBox(
-        width: 2,
+        width: 10,
       ),
       Text('E-Commerce'),
       SizedBox(
-        width: 2,
+        width: 10,
       ),
       Text('/'),
       SizedBox(
-        width: 2,
+        width: 10,
       ),
       Text(
         StringRes.checkOut,

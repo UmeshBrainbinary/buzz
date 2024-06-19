@@ -3,7 +3,7 @@
 Buzz Web App.
 
 ## Getting Started
-
+flutter SDK 3.22.1
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

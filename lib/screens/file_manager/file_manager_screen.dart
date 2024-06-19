@@ -5,7 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
+class FileScreen extends StatelessWidget {
   final FileController fileController = Get.put(FileController());
 
   @override
