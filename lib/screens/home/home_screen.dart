@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:graphic/graphic.dart' as graphic;
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -306,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     child:Row(
                       children: [
                         Expanded(
-                          child: chat(),
+                          child: _buildColumnRoundedChart(),
                         ),
                         SizedBox(width: 30,),
                       sizingInformation.isDesktop?  Expanded(
@@ -385,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Column(
       children: [
         Expanded(
-          child: chat(),
+          child: _buildColumnRoundedChart(),
         ),
         SizedBox(width: 30,),
         Expanded(
@@ -596,106 +597,49 @@ class DataDefault extends StatelessWidget {
 
 
 
-Widget chat(){
-  final data = [
-    {'genre': 'Sports', 'sold': 275},
-    {'genre': 'Strategy', 'sold': 115},
-    {'genre': 'Action', 'sold': 120},
-    {'genre': 'Shooter', 'sold': 350},
-    {'genre': 'Other', 'sold': 150},
+Widget _buildColumnRoundedChart() {
+  List<SalesData> chartData = [
+    SalesData('1', 30),
+    SalesData('2', 20),
+    SalesData('3', 20),
+    SalesData('4', 30),
+    SalesData('5', 40),
+    SalesData('6', 30),
+    SalesData('7', 10),
+    SalesData('8', 70),
   ];
-  return  graphic.Chart(
-    data: data,
-    variables: {
-      'genre': graphic.Variable(
-        accessor: (Map map) => map['genre'] as String,
-      ),
-      'sold': graphic.Variable(
-        accessor: (Map map) => map['sold'] as num,
-      ),
-    },
-    marks: [
-      graphic.IntervalMark(
-        position: graphic.Varset('genre') * graphic.Varset('sold'),
-        size:graphic.SizeEncode(value: 10,),
-        color: graphic.ColorEncode(
-          variable: 'genre',
-          values: [
-            Colors.blue,
-            Colors.blue,
-            Colors.blue,
-            Colors.blue,
-            Colors.blue,
-          ],
-        ),
-      ),
-    ],
-    axes: [
-      graphic.Defaults.horizontalAxis,
-      graphic.Defaults.verticalAxis,
-    ],
-  );
 
-  /*BarChart(
-    BarChartData(
-      alignment: BarChartAlignment.spaceAround,
-      maxY: 80,
-      barTouchData: BarTouchData(enabled: false),
-      titlesData: FlTitlesData(
-        show: true,
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            getTitlesWidget: (double value, TitleMeta meta) {
-              return Text(
-                value.toInt().toString(),
-                style: TextStyle(color: Colors.black),
-              );
-            },
-            reservedSize: 28,
-          ),
+  return Padding(
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Selling Growth',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-      ),
-      gridData: FlGridData(show: true),
-      borderData: FlBorderData(show: false),
-      barGroups: [
-        BarChartGroupData(
-          x: 1,
-          barRods: [BarChartRodData( color: Colors.blue, width: 16, toY: 30,)],
-        ),
-        BarChartGroupData(
-          x: 2,
-          barRods: [BarChartRodData(toY: 10, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [BarChartRodData(toY: 20, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 4,
-          barRods: [BarChartRodData(toY: 10, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 5,
-          barRods: [BarChartRodData(toY: 40, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 6,
-          barRods: [BarChartRodData(toY: 10, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 7,
-          barRods: [BarChartRodData(toY: 70, color: Colors.blue, width: 16)],
-        ),
-        BarChartGroupData(
-          x: 8,
-          barRods: [BarChartRodData(toY: 5, color: Colors.blue, width: 16)],
+        const SizedBox(height: 20),
+        SfCartesianChart(
+          primaryXAxis: const CategoryAxis(),
+          series: <CartesianSeries>[
+            ColumnSeries<SalesData, String>(
+              dataSource: chartData,
+              xValueMapper: (SalesData sales, _) => sales.month,
+              yValueMapper: (SalesData sales, _) => sales.sales,
+              borderRadius: BorderRadius.circular(15),
+              color: const Color(0xff0059E7),
+              dataLabelSettings: const DataLabelSettings(isVisible: true),
+            )
+          ],
         ),
       ],
     ),
-  );*/
+  );
 }
 
+class SalesData {
+  final String month;
+  final double sales;
+
+  SalesData(this.month, this.sales);
+}

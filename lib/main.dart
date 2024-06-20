@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       // ),
       home:
       DashBoardScreen(
-        child: ChartScreen(),
+        child: HomeScreen(),
         screenName: 'Dashboards',
       ),
 

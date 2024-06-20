@@ -161,10 +161,10 @@ class GeneralScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(width: 30),
+                         SizedBox(width: 30),
                         CircularPercentIndicator(
                           percent: 0.6,
-                          center: const Text(
+                          center:  Text(
                             "60%",
                             style: TextStyle(fontSize: 12),
                           ),
