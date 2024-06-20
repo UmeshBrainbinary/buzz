@@ -7,6 +7,7 @@ import 'package:buzz/screens/checkout/checkout_screen.dart';
 
 import 'package:buzz/screens/dashboard/dashboard_screen.dart';
 import 'package:buzz/screens/faq/faq_screen.dart';
+import 'package:buzz/screens/general/general_screen.dart';
 import 'package:buzz/screens/home/home_screen.dart';
 import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/pricing/pricing_screen.dart';
