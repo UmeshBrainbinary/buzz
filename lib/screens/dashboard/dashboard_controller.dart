@@ -12,6 +12,7 @@ class DashBoardController extends GetxController{
   bool selectUser = false;
   bool Menulevel = false;
   bool buttons = false;
+  bool project = false;
 
 
   final List GENERAL = [

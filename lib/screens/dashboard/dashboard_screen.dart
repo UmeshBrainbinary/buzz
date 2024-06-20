@@ -145,6 +145,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           transition: Transition.noTransition,
           () => DashBoardScreen(child: Level11(), screenName: 'Level 1.2'));
     }
+    else if (index == StringRes.projectList) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(child:Text('nx'), screenName: 'Project'));
+    }
+    else if (index == StringRes.createNew) {
+      Get.offAll(
+          transition: Transition.noTransition,
+          () => DashBoardScreen(child:Text('nj'), screenName: 'Project'));
+    }
   }
 
   @override
@@ -394,55 +404,160 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             height: 10,
                           ),
                         ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       dashBoardController.selectedMainCategory =
+                        //           StringRes.projects;
+                        //
+                        //       setState(() {});
+                        //     },
+                        //     child: Row(
+                        //       children: [
+                        //         Icon(
+                        //           CupertinoIcons.checkmark_alt_circle,
+                        //           size: 17,
+                        //           color: dashBoardController
+                        //                       .selectedMainCategory ==
+                        //                   StringRes.projects
+                        //               ? Colors.blueAccent
+                        //               : Colors.black,
+                        //         ),
+                        //         SizedBox(
+                        //           width: 10,
+                        //         ),
+                        //         Text(
+                        //           StringRes.projects,
+                        //           textAlign: TextAlign.start,
+                        //           style: TextStyle(
+                        //             fontWeight: FontWeight.bold,
+                        //             fontSize: 12,
+                        //             color: dashBoardController
+                        //                         .selectedMainCategory ==
+                        //                     StringRes.projects
+                        //                 ? Colors.blueAccent
+                        //                 : Colors.black,
+                        //           ),
+                        //         ),
+                        //         Spacer(),
+                        //         Icon(
+                        //           Icons.arrow_drop_up_sharp,
+                        //           color: dashBoardController
+                        //                       .selectedMainCategory ==
+                        //                   StringRes.projects
+                        //               ? Colors.blueAccent
+                        //               : Colors.black,
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                            onTap: () {
-                              dashBoardController.selectedMainCategory =
-                                  StringRes.projects;
-
-                              setState(() {});
-                            },
-                            child: Row(
-                              children: [
-                                Icon(
-                                  CupertinoIcons.checkmark_alt_circle,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(CupertinoIcons.checkmark_alt_circle,
                                   size: 17,
                                   color: dashBoardController
-                                              .selectedMainCategory ==
-                                          StringRes.projects
+                                      .selectedMainCategory ==
+                                      'Project'
                                       ? Colors.blueAccent
-                                      : Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
+                                      : Colors.black),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  dashBoardController.selectedMainCategory =
+                                  'Project';
+                                  setState(() {
+                                    if (dashBoardController.project ==
+                                        true) {
+                                      dashBoardController.project = false;
+                                    } else {
+                                      dashBoardController.project = true;
+                                    }
+                                  });
+                                },
+                                child: Text(
                                   StringRes.projects,
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                    color: dashBoardController
-                                                .selectedMainCategory ==
-                                            StringRes.projects
-                                        ? Colors.blueAccent
-                                        : Colors.black,
-                                  ),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: dashBoardController
+                                          .selectedMainCategory ==
+                                          'Project'
+                                          ? Colors.blueAccent
+                                          : Colors.black),
                                 ),
-                                Spacer(),
-                                Icon(
-                                  Icons.arrow_drop_up_sharp,
+                              ),
+                              Spacer(),
+                              Icon(
+                                  dashBoardController.project == true
+                                      ? Icons.arrow_drop_down_sharp
+                                      : Icons.arrow_drop_up_sharp,
                                   color: dashBoardController
-                                              .selectedMainCategory ==
-                                          StringRes.projects
+                                      .selectedMainCategory ==
+                                      'Project'
                                       ? Colors.blueAccent
-                                      : Colors.black,
+                                      : Colors.black),
+                            ],
+                          ),
+                        ),
+                        dashBoardController.selectedMainCategory == 'Project' &&
+                            dashBoardController.project == true
+                            ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    indexWiseNavigation(
+                                        index: StringRes.projectList);
+                                  },
+                                  child: Text(
+                                    StringRes.projectList,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 11),
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    indexWiseNavigation(
+                                        index: StringRes.createNew);
+                                  },
+                                  child: Text(
+                                    StringRes.createNew,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(fontSize: 11),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                            : SizedBox(),
                         Expanded(
                           child: SizedBox(
                             height: 10,

@@ -132,6 +132,8 @@ static const String liveProduct = 'Live Product';
   static const String sale = 'Total Sale';
   static const String profit = 'Total Profit';
   static const String orders = 'Total Order';
+  static const String projectList = 'Project List';
+  static const String createNew= 'Create New';
 
 
 

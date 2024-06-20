@@ -2,6 +2,7 @@
 import 'package:buzz/screens/Avatar/Avatar_screen.dart';
 import 'package:buzz/screens/Notification/Notification_Screen.dart';
 import 'package:buzz/screens/cart/cart_screen.dart';
+import 'package:buzz/screens/chart_module/chart_screen.dart';
 import 'package:buzz/screens/checkout/checkout_screen.dart';
 
 import 'package:buzz/screens/dashboard/dashboard_screen.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
       // ),
       home:
       DashBoardScreen(
-        child: HomeScreen(),
+        child: ChartScreen(),
         screenName: 'Dashboards',
       ),
 
