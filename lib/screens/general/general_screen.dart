@@ -1,7 +1,9 @@
 import 'package:buzz/screens/general/general_controller.dart';
 import 'package:buzz/utils/Assets_res.dart';
 import 'package:buzz/utils/Color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -24,7 +26,7 @@ class GeneralScreen extends StatelessWidget {
                 children: [Text('vfdnmkj')],
               ),
             ),
-            Row(
+            Wrap(
               children: [
                 Wrap(
                   direction: Axis.horizontal,
@@ -38,10 +40,10 @@ class GeneralScreen extends StatelessWidget {
                           ))
                       .toList(),
                 ),
-                const SizedBox(width: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, top: 20),
                   child: Container(
+                    width: 350,
                     padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -113,6 +115,7 @@ class GeneralScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Container(
+                    width: 350,
                     padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -711,13 +714,29 @@ class GeneralScreen extends StatelessWidget {
                             ),
                           ],
                         ),
+                        Expanded(
+                          child: SfCartesianChart(
+                              series: <CartesianSeries>[
+                                LineSeries<ChartDataSale1, int>(
+                                  dataSource: generalController.chartDataSale1,
+                                  xValueMapper: (ChartDataSale1 data, _) => data.x,
+                                  yValueMapper: (ChartDataSale1 data, _) => data.y,
+                                  name: 'Ethereum',
+                                  color: Colors.blueGrey,
+                                ),
+                                ColumnSeries<ChartDataLive, int>(
+                                  dataSource: generalController.chartDataLive,
+                                  xValueMapper: (ChartDataLive data, _) => data.x,
+                                  yValueMapper: (ChartDataLive data, _) => data.y,
+                                  color: ColorRes.darkRed,
+                                ),
+                              ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Container(
-                    decoration: const BoxDecoration(),
-                  )
                 ],
               ),
             ),
@@ -731,13 +750,646 @@ class GeneralScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10,top: 15),
+              padding: const EdgeInsets.only(left: 10,top: 15,bottom: 50),
               child: Wrap(
                 children: [
-
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        width: 550,
+                        child: GridView(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 2.5,
+                            crossAxisSpacing: 15,
+                            mainAxisSpacing: 10,
+                          ),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "New Orders",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade400,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Row(
+                                        children: [
+                                          Text(
+                                            "2,435",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: ColorRes.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            "+50%",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.blueAccent,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
+                                    ),
+                                    padding: EdgeInsets.all(12),
+                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "New Orders",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade400,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Row(
+                                        children: [
+                                          Text(
+                                            "2,435",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: ColorRes.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            "+50%",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.blueAccent,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
+                                    ),
+                                    padding: EdgeInsets.all(12),
+                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "New Orders",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade400,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Row(
+                                        children: [
+                                          Text(
+                                            "2,435",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: ColorRes.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            "+50%",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.blueAccent,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
+                                    ),
+                                    padding: EdgeInsets.all(12),
+                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "New Orders",
+                                        style: TextStyle(
+                                          color: Colors.grey.shade400,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Row(
+                                        children: [
+                                          Text(
+                                            "2,435",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: ColorRes.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            "+50%",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.blueAccent,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
+                                    ),
+                                    padding: EdgeInsets.all(12),
+                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10,),
+                      Wrap(
+                        spacing: 15,
+                        children: [
+                          Container(
+                            height: 110,
+                            width: 265,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "1,80k",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 18,
+                                        color: ColorRes.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Orders",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.grey.shade400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 110,
+                                  width: 150,
+                                  child: SfCartesianChart(
+                                    primaryXAxis: const CategoryAxis(
+                                      isVisible: false,
+                                    ),
+                                    primaryYAxis: const NumericAxis(
+                                      isVisible: false,
+                                    ),
+                                    plotAreaBorderWidth: 0,
+                                    series: <LineSeries<SalesData, String>>[
+                                      LineSeries<SalesData, String>(
+                                        dataSource: <SalesData>[
+                                          SalesData('Jan', 35),
+                                          SalesData('Feb', 28),
+                                          SalesData('Mar', 34),
+                                          SalesData('Apr', 32),
+                                          SalesData('May', 40),
+                                        ],
+                                        xValueMapper: (SalesData sales, _) => sales.year,
+                                        yValueMapper: (SalesData sales, _) => sales.sales,
+                                        color: Colors.black,
+                                        // Shadow color
+                                        width: 2, //
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 110,
+                            width: 265,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "6,90k",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 18,
+                                        color: ColorRes.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Profit",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.grey.shade400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 110,
+                                  width: 150,
+                                  child: SfCartesianChart(
+                                    primaryXAxis: const CategoryAxis(
+                                      isVisible: false,
+                                    ),
+                                    primaryYAxis: const NumericAxis(
+                                      isVisible: false,
+                                    ),
+                                    plotAreaBorderWidth: 0,
+                                    series: <LineSeries<SalesData, String>>[
+                                      LineSeries<SalesData, String>(
+                                        dataSource: <SalesData>[
+                                          SalesData('Jan', 35),
+                                          SalesData('Feb', 28),
+                                          SalesData('Mar', 34),
+                                          SalesData('Apr', 32),
+                                          SalesData('May', 40),
+                                        ],
+                                        xValueMapper: (SalesData sales, _) => sales.year,
+                                        yValueMapper: (SalesData sales, _) => sales.sales,
+                                        color: Colors.black,
+                                        // Shadow color
+                                        width: 2, //
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(width: 15),
+                  Container(
+                    height: 345,
+                    width: 400,
+                    padding: EdgeInsets.symmetric(horizontal: 30,vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              height: 80,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.brown.shade200
+                              ),
+                              padding: EdgeInsets.all(10),
+                              child: Image.asset(AssetRes.man3),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              "Your Balance",
+                              style: TextStyle(
+                                color: Colors.grey.shade400
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Text(
+                          "\$768,987.90",
+                          style: TextStyle(
+                              color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                children: [
+                                  Container(
+                                    height: 45,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.redAccent.withOpacity(0.2 ),
+                                    ),
+                                    child: Icon(CupertinoIcons.arrow_down_right_circle,color: Colors.redAccent,),
+                                  ),
+                                  SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Investment",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey.shade500,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        "78.8K",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "-11.67%",
+                                        style: TextStyle(
+                                          color: Colors.redAccent,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                children: [
+                                  Container(
+                                    height: 45,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.green.withOpacity(0.2),
+                                    ),
+                                    child: Icon(CupertinoIcons.arrow_up_right_circle,color: Colors.green,),
+                                  ),
+                                  SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Cash Back",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey.shade500,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "19.7K",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "+10.67%",
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 45,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.green.withOpacity(0.2 ),
+                                    ),
+                                    child: Icon(CupertinoIcons.arrow_up_right_circle,color: Colors.green,),
+                                  ),
+                                  const SizedBox(width: 15),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        "Profit",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey.shade500,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "6.48K",
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                children: [
+                                  Container(
+                                    height: 45,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.redAccent.withOpacity(0.2),
+                                    ),
+                                    child: const Icon(CupertinoIcons.arrow_down_right_circle,color: Colors.redAccent,),
+                                  ),
+                                  const SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Loss",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey.shade500,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "1.4K",
+                                        style: TextStyle(
+                                          color: Colors.redAccent,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Container(
+                    height: 345,
+                    width: 525,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                      ),
+                      child: CalendarCarousel(
+                        weekendTextStyle: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                        thisMonthDayBorderColor: Colors.transparent,
+                        weekFormat: false,
+                        daysTextStyle: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                        height: 300.0,
+                        markedDateIconBorderColor: Colors.transparent,
+                        childAspectRatio: 1.5,
+                        dayPadding: 0.0,
+                        prevDaysTextStyle: TextStyle(fontSize: 15),
+                        selectedDateTime: DateTime.now(),
+                        headerTextStyle: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        dayButtonColor: Colors.white,
+                        weekDayBackgroundColor: Colors.white,
+                        markedDateMoreCustomDecoration: BoxDecoration(color: Colors.white),
+                        shouldShowTransform: false,
+                        staticSixWeekFormat: false,
+                        weekdayTextStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        todayButtonColor: Colors.transparent,
+                        selectedDayBorderColor: Colors.transparent,
+                        todayBorderColor: Colors.transparent,
+                        selectedDayButtonColor: Colors.transparent,
+                        daysHaveCircularBorder: false,
+                        todayTextStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                  )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -753,6 +1405,7 @@ class GeneralDataValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 250,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: ColorRes.white,
