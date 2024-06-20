@@ -44,5 +44,20 @@ class AssetRes {
   static const starbucks = '${images}starbucks.png';
   static const image = '${images}image.png';
   static const creative = '${images}creative.jpeg';
+  static const bitcoin = '${images}bitcoin.png';
+  static const tether = '${images}tether.png';
+  static const bandProtocol = '${images}band_protocol.png';
+  static const noteSearch = '${images}note_search.png';
+  static const shoppingCart = '${images}shopping-cart.png';
+  static const discount = '${images}discount.png';
+  static const stock = '${images}stock.png';
+  static const addUser = '${images}add_user.png';
+  static const noteCheck = '${images}note_check.png';
+  static const studentCourse = '${images}student_course.png';
+  static const personRemove = '${images}person_remove.png';
+  static const snapchat = '${images}snapchat.png';
+  static const tumbler = '${images}tumbler.png';
+  static const twitterLogo = '${images}twitter_logo.png';
+  static const facebookLogo = '${images}facebook_logo.png';
 
 }
