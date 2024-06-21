@@ -22,7 +22,7 @@ class DataWrap extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Container(
-        width: 230,
+        width: 240,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: ColorRes.white,

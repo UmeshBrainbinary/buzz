@@ -1,4 +1,7 @@
 import 'package:buzz/screens/general/general_controller.dart';
+import 'package:buzz/screens/general/widget/general_widget.dart';
+import 'package:buzz/screens/general/widget/order_widget.dart';
+import 'package:buzz/screens/general/widget/social_widget.dart';
 import 'package:buzz/utils/Assets_res.dart';
 import 'package:buzz/utils/Color.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,22 +26,21 @@ class GeneralScreen extends StatelessWidget {
           children: [
             const Center(
               child: Wrap(
-                children: [Text('vfdnmkj')],
+                children: [
+                  Text('General'),
+                ],
               ),
             ),
             Wrap(
               children: [
-                Wrap(
-                  direction: Axis.horizontal,
-                  children: generalController.generalList
-                      .map((element) => Padding(
-                            padding: const EdgeInsets.only(left: 10.0, top: 20),
-                            child: GeneralDataValue(
-                              generalData: generalController.generalList[
-                                  generalController.generalList.indexOf(element)],
-                            ),
-                          ))
-                      .toList(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, top: 20),
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    direction: Axis.horizontal,
+                    children: generalController.generalList.map((element) => GeneralDataValue(generalData: element)).toList(),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, top: 20),
@@ -63,9 +65,7 @@ class GeneralScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              const SizedBox(height: 10),
                               const Text(
                                 "67,798",
                                 style: TextStyle(
@@ -81,9 +81,7 @@ class GeneralScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              const SizedBox(height: 10),
                               const Text(
                                 "The point of the Using Lorem Ipsum",
                                 style: TextStyle(
@@ -97,6 +95,7 @@ class GeneralScreen extends StatelessWidget {
                         const SizedBox(width: 30),
                         CircularPercentIndicator(
                           percent: 0.7,
+                          animationDuration: 1000,
                           center: const Text(
                             "70%",
                             style: TextStyle(fontSize: 12),
@@ -135,9 +134,7 @@ class GeneralScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              const SizedBox(height: 10),
                               const Text(
                                 "98.1%",
                                 style: TextStyle(
@@ -164,10 +161,11 @@ class GeneralScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                         SizedBox(width: 30),
+                        const SizedBox(width: 30),
                         CircularPercentIndicator(
                           percent: 0.6,
-                          center:  Text(
+                          animationDuration: 1000,
+                          center: const Text(
                             "60%",
                             style: TextStyle(fontSize: 12),
                           ),
@@ -184,7 +182,7 @@ class GeneralScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0,top: 15),
+              padding: const EdgeInsets.only(left: 10.0, top: 15),
               child: Wrap(
                 runSpacing: 10,
                 alignment: WrapAlignment.start,
@@ -235,9 +233,7 @@ class GeneralScreen extends StatelessWidget {
                         ),
                         const Text(
                           "+50%",
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                          ),
+                          style: TextStyle(color: Colors.redAccent),
                         ),
                       ],
                     ),
@@ -258,8 +254,7 @@ class GeneralScreen extends StatelessWidget {
                           width: 50,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(
-                                color: Colors.deepPurpleAccent, width: 1),
+                            border: Border.all(color: Colors.deepPurpleAccent, width: 1),
                           ),
                           padding: const EdgeInsets.all(10),
                           child: Image.asset(
@@ -288,9 +283,7 @@ class GeneralScreen extends StatelessWidget {
                         ),
                         const Text(
                           "+70%",
-                          style: TextStyle(
-                            color: Colors.deepPurpleAccent,
-                          ),
+                          style: TextStyle(color: Colors.deepPurpleAccent),
                         ),
                       ],
                     ),
@@ -340,9 +333,7 @@ class GeneralScreen extends StatelessWidget {
                         ),
                         const Text(
                           "-20%",
-                          style: TextStyle(
-                            color: Colors.yellow,
-                          ),
+                          style: TextStyle(color: Colors.yellow),
                         ),
                       ],
                     ),
@@ -367,7 +358,7 @@ class GeneralScreen extends StatelessWidget {
                           ),
                           padding: const EdgeInsets.all(10),
                           child: Image.asset(
-                            AssetRes.shoppingCart,
+                            AssetRes.noteCheck,
                             color: Colors.green,
                           ),
                         ),
@@ -384,17 +375,15 @@ class GeneralScreen extends StatelessWidget {
                             Text(
                               "Purchase rate",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey.shade500,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade500,
                               ),
                             ),
                           ],
                         ),
                         const Text(
                           "+70%",
-                          style: TextStyle(
-                            color: Colors.green,
-                          ),
+                          style: TextStyle(color: Colors.green),
                         ),
                       ],
                     ),
@@ -403,7 +392,7 @@ class GeneralScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0,top: 15),
+              padding: const EdgeInsets.only(left: 10.0, top: 15),
               child: Wrap(
                 runSpacing: 10,
                 children: [
@@ -476,7 +465,7 @@ class GeneralScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(height: 15),
                       Container(
                         height: 160,
                         width: 375,
@@ -546,7 +535,7 @@ class GeneralScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 15,),
+                  const SizedBox(width: 15),
                   Column(
                     children: [
                       Container(
@@ -556,11 +545,11 @@ class GeneralScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   "Total Users",
@@ -570,12 +559,13 @@ class GeneralScreen extends StatelessWidget {
                                   ),
                                 ),
                                 PopupMenuButton(
-                                itemBuilder: (context) {
-                                  return List.generate(3, (index) => PopupMenuItem(child: Text("$index")),);
-                                },),
+                                  itemBuilder: (context) {
+                                    return List.generate(3, (index) => PopupMenuItem(child: Text("$index")));
+                                  },
+                                ),
                               ],
                             ),
-                            const SizedBox(height: 10,),
+                            const SizedBox(height: 10),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 15.0),
                               child: Row(
@@ -585,30 +575,31 @@ class GeneralScreen extends StatelessWidget {
                                     children: [
                                       Container(
                                         height: 50,
-                                      width: 50,
+                                        width: 50,
                                         decoration: BoxDecoration(
                                           color: Colors.deepPurpleAccent.withOpacity(0.2),
-                                          border: Border.all(color: Colors.deepPurpleAccent,width: 1),
+                                          border: Border.all(color: Colors.deepPurpleAccent, width: 1),
                                           shape: BoxShape.circle,
                                         ),
                                         padding: const EdgeInsets.all(15),
-                                        child: Image.asset(AssetRes.addUser,color: Colors.deepPurpleAccent,),
+                                        child: Image.asset(
+                                          AssetRes.addUser,
+                                          color: Colors.deepPurpleAccent,
+                                        ),
                                       ),
-                                      const SizedBox(width: 30,),
+                                      const SizedBox(width: 30),
                                       const Column(
                                         children: [
                                           Text(
                                             "178,098",
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
-                                              fontSize: 16
+                                              fontSize: 16,
                                             ),
                                           ),
                                           Text(
                                             "+30.89",
-                                            style: TextStyle(
-                                              color: Colors.lightGreen
-                                            ),
+                                            style: TextStyle(color: Colors.lightGreen),
                                           ),
                                         ],
                                       ),
@@ -621,13 +612,16 @@ class GeneralScreen extends StatelessWidget {
                                         width: 50,
                                         decoration: BoxDecoration(
                                           color: Colors.lightGreen.withOpacity(0.2),
-                                          border: Border.all(color: Colors.lightGreen,width: 1),
+                                          border: Border.all(color: Colors.lightGreen, width: 1),
                                           shape: BoxShape.circle,
                                         ),
                                         padding: const EdgeInsets.all(12),
-                                        child: Image.asset(AssetRes.personRemove,color: Colors.lightGreen,),
+                                        child: Image.asset(
+                                          AssetRes.personRemove,
+                                          color: Colors.lightGreen,
+                                        ),
                                       ),
-                                      const SizedBox(width: 30,),
+                                      const SizedBox(width: 30),
                                       const Column(
                                         children: [
                                           Text(
@@ -653,7 +647,7 @@ class GeneralScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(height: 15),
                       Container(
                         height: 160,
                         width: 500,
@@ -661,11 +655,11 @@ class GeneralScreen extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   "Followers Growth",
@@ -681,24 +675,62 @@ class GeneralScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            Expanded(
+                              child: SfCartesianChart(
+                                primaryXAxis: const CategoryAxis(
+                                  isVisible: false,
+                                ),
+                                primaryYAxis: const NumericAxis(
+                                  isVisible: false,
+                                ),
+                                plotAreaBorderWidth: 0,
+                                series: <CartesianSeries>[
+                                  SplineAreaSeries<ChartData, String>(
+                                    dataSource: [
+                                      ChartData('Jan', 30),
+                                      ChartData('Feb', 28),
+                                      ChartData('Mar', 34),
+                                      ChartData('Apr', 32),
+                                      ChartData('May', 40),
+                                      ChartData('Jun', 38),
+                                      ChartData('Jul', 36),
+                                      ChartData('Aug', 45),
+                                      ChartData('Sep', 50),
+                                      ChartData('Oct', 55),
+                                    ],
+                                    xValueMapper: (ChartData data, _) => data.month,
+                                    yValueMapper: (ChartData data, _) => data.followers,
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.blue.withOpacity(0.4),
+                                        Colors.blue.withOpacity(0.1)
+                                      ],
+                                      stops: const [0.2, 1],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(width: 15,),
+                  const SizedBox(width: 15),
                   Container(
                     height: 335,
                     width: 600,
-                    padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
                               "Visitors",
@@ -709,28 +741,28 @@ class GeneralScreen extends StatelessWidget {
                             ),
                             PopupMenuButton(
                               itemBuilder: (context) {
-                                return List.generate(3, (index) => PopupMenuItem(child: Text("$index")),);
+                                return List.generate(3, (index) => PopupMenuItem(child: Text("$index")));
                               },
                             ),
                           ],
                         ),
                         Expanded(
                           child: SfCartesianChart(
-                              series: <CartesianSeries>[
-                                LineSeries<ChartDataSale1, int>(
-                                  dataSource: generalController.chartDataSale1,
-                                  xValueMapper: (ChartDataSale1 data, _) => data.x,
-                                  yValueMapper: (ChartDataSale1 data, _) => data.y,
-                                  name: 'Ethereum',
-                                  color: Colors.blueGrey,
-                                ),
-                                ColumnSeries<ChartDataLive, int>(
-                                  dataSource: generalController.chartDataLive,
-                                  xValueMapper: (ChartDataLive data, _) => data.x,
-                                  yValueMapper: (ChartDataLive data, _) => data.y,
-                                  color: ColorRes.darkRed,
-                                ),
-                              ],
+                            series: <CartesianSeries>[
+                              LineSeries<ChartDataSale1, int>(
+                                dataSource: generalController.chartDataSale1,
+                                xValueMapper: (ChartDataSale1 data, _) => data.x,
+                                yValueMapper: (ChartDataSale1 data, _) => data.y,
+                                name: 'Ethereum',
+                                color: Colors.blueGrey,
+                              ),
+                              ColumnSeries<ChartDataLive, int>(
+                                dataSource: generalController.chartDataLive,
+                                xValueMapper: (ChartDataLive data, _) => data.x,
+                                yValueMapper: (ChartDataLive data, _) => data.y,
+                                color: ColorRes.darkRed,
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -741,7 +773,7 @@ class GeneralScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0,top: 15),
+              padding: const EdgeInsets.only(left: 10.0, top: 15),
               child: Wrap(
                 runSpacing: 10,
                 spacing: 15,
@@ -750,8 +782,9 @@ class GeneralScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10,top: 15,bottom: 50),
+              padding: const EdgeInsets.only(left: 10, top: 15, bottom: 50),
               child: Wrap(
+                runSpacing: 10,
                 children: [
                   Column(
                     mainAxisSize: MainAxisSize.min,
@@ -767,223 +800,10 @@ class GeneralScreen extends StatelessWidget {
                           ),
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white
-                              ),
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        "New Orders",
-                                        style: TextStyle(
-                                          color: Colors.grey.shade400,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const Row(
-                                        children: [
-                                          Text(
-                                            "2,435",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 18,
-                                              color: ColorRes.black,
-                                            ),
-                                          ),
-                                          Text(
-                                            "+50%",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.blueAccent,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
-                                    ),
-                                    padding: EdgeInsets.all(12),
-                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white
-                              ),
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        "New Orders",
-                                        style: TextStyle(
-                                          color: Colors.grey.shade400,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const Row(
-                                        children: [
-                                          Text(
-                                            "2,435",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 18,
-                                              color: ColorRes.black,
-                                            ),
-                                          ),
-                                          Text(
-                                            "+50%",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.blueAccent,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
-                                    ),
-                                    padding: EdgeInsets.all(12),
-                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        "New Orders",
-                                        style: TextStyle(
-                                          color: Colors.grey.shade400,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const Row(
-                                        children: [
-                                          Text(
-                                            "2,435",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 18,
-                                              color: ColorRes.black,
-                                            ),
-                                          ),
-                                          Text(
-                                            "+50%",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.blueAccent,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
-                                    ),
-                                    padding: EdgeInsets.all(12),
-                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white
-                              ),
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        "New Orders",
-                                        style: TextStyle(
-                                          color: Colors.grey.shade400,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const Row(
-                                        children: [
-                                          Text(
-                                            "2,435",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 18,
-                                              color: ColorRes.black,
-                                            ),
-                                          ),
-                                          Text(
-                                            "+50%",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.blueAccent,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    width: 50,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.deepPurpleAccent.withOpacity(0.3),
-                                    ),
-                                    padding: EdgeInsets.all(12),
-                                    child: Image.asset(AssetRes.stock,color: Colors.deepPurpleAccent,),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                          children: generalController.orderData.map((e) => OrdersTab(orderData: e)).toList(),
                         ),
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(height: 10),
                       Wrap(
                         spacing: 15,
                         children: [
@@ -994,14 +814,14 @@ class GeneralScreen extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "1,80k",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
@@ -1029,8 +849,8 @@ class GeneralScreen extends StatelessWidget {
                                       isVisible: false,
                                     ),
                                     plotAreaBorderWidth: 0,
-                                    series: <LineSeries<SalesData, String>>[
-                                      LineSeries<SalesData, String>(
+                                    series: <SplineAreaSeries<SalesData, String>>[
+                                      SplineAreaSeries<SalesData, String>(
                                         dataSource: <SalesData>[
                                           SalesData('Jan', 35),
                                           SalesData('Feb', 28),
@@ -1040,9 +860,15 @@ class GeneralScreen extends StatelessWidget {
                                         ],
                                         xValueMapper: (SalesData sales, _) => sales.year,
                                         yValueMapper: (SalesData sales, _) => sales.sales,
-                                        color: Colors.black,
-                                        // Shadow color
-                                        width: 2, //
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.deepPurpleAccent.withOpacity(0.4),
+                                            Colors.deepPurpleAccent.withOpacity(0.1)
+                                          ],
+                                          stops: const [0.2, 1],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -1057,14 +883,14 @@ class GeneralScreen extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "6,90k",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
@@ -1092,8 +918,8 @@ class GeneralScreen extends StatelessWidget {
                                       isVisible: false,
                                     ),
                                     plotAreaBorderWidth: 0,
-                                    series: <LineSeries<SalesData, String>>[
-                                      LineSeries<SalesData, String>(
+                                    series: <SplineAreaSeries<SalesData, String>>[
+                                      SplineAreaSeries<SalesData, String>(
                                         dataSource: <SalesData>[
                                           SalesData('Jan', 35),
                                           SalesData('Feb', 28),
@@ -1103,9 +929,15 @@ class GeneralScreen extends StatelessWidget {
                                         ],
                                         xValueMapper: (SalesData sales, _) => sales.year,
                                         yValueMapper: (SalesData sales, _) => sales.sales,
-                                        color: Colors.black,
-                                        // Shadow color
-                                        width: 2, //
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.lightBlueAccent.withOpacity(0.4),
+                                            Colors.lightBlueAccent.withOpacity(0.1)
+                                          ],
+                                          stops: const [0.2, 1],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -1117,14 +949,14 @@ class GeneralScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Container(
                     height: 345,
                     width: 400,
-                    padding: EdgeInsets.symmetric(horizontal: 30,vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1136,26 +968,24 @@ class GeneralScreen extends StatelessWidget {
                               width: 80,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.brown.shade200
+                                color: Colors.brown.shade200,
                               ),
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Image.asset(AssetRes.man3),
                             ),
                             const SizedBox(height: 10),
                             Text(
                               "Your Balance",
-                              style: TextStyle(
-                                color: Colors.grey.shade400
-                              ),
+                              style: TextStyle(color: Colors.grey.shade400),
                             ),
                           ],
                         ),
                         const Text(
                           "\$768,987.90",
                           style: TextStyle(
-                              color: Colors.black,
+                            color: Colors.black,
                             fontSize: 16,
-                            fontWeight: FontWeight.w600
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -1164,18 +994,21 @@ class GeneralScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     height: 45,
                                     width: 45,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: Colors.redAccent.withOpacity(0.2 ),
+                                      color: Colors.redAccent.withOpacity(0.2),
                                     ),
-                                    child: Icon(CupertinoIcons.arrow_down_right_circle,color: Colors.redAccent,),
+                                    child: const Icon(
+                                      CupertinoIcons.arrow_down_right_circle,
+                                      color: Colors.redAccent,
+                                    ),
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -1187,7 +1020,7 @@ class GeneralScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      Text(
+                                      const Text(
                                         "78.8K",
                                         style: TextStyle(
                                           fontSize: 16,
@@ -1195,7 +1028,7 @@ class GeneralScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      Text(
+                                      const Text(
                                         "-11.67%",
                                         style: TextStyle(
                                           color: Colors.redAccent,
@@ -1207,9 +1040,10 @@ class GeneralScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            const SizedBox(width: 15),
                             Expanded(
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     height: 45,
@@ -1218,9 +1052,12 @@ class GeneralScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.green.withOpacity(0.2),
                                     ),
-                                    child: Icon(CupertinoIcons.arrow_up_right_circle,color: Colors.green,),
+                                    child: const Icon(
+                                      CupertinoIcons.arrow_up_right_circle,
+                                      color: Colors.green,
+                                    ),
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -1254,7 +1091,6 @@ class GeneralScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -1267,9 +1103,12 @@ class GeneralScreen extends StatelessWidget {
                                     width: 45,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: Colors.green.withOpacity(0.2 ),
+                                      color: Colors.green.withOpacity(0.2),
                                     ),
-                                    child: Icon(CupertinoIcons.arrow_up_right_circle,color: Colors.green,),
+                                    child: const Icon(
+                                      CupertinoIcons.arrow_up_right_circle,
+                                      color: Colors.green,
+                                    ),
                                   ),
                                   const SizedBox(width: 15),
                                   Column(
@@ -1294,9 +1133,10 @@ class GeneralScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            const SizedBox(width: 15),
                             Expanded(
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start  ,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     height: 45,
@@ -1305,7 +1145,10 @@ class GeneralScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.redAccent.withOpacity(0.2),
                                     ),
-                                    child: const Icon(CupertinoIcons.arrow_down_right_circle,color: Colors.redAccent,),
+                                    child: const Icon(
+                                      CupertinoIcons.arrow_down_right_circle,
+                                      color: Colors.redAccent,
+                                    ),
                                   ),
                                   const SizedBox(width: 15),
                                   Column(
@@ -1340,52 +1183,52 @@ class GeneralScreen extends StatelessWidget {
                   Container(
                     height: 345,
                     width: 525,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.white,
+                    ),
+                    child: CalendarCarousel(
+                      weekendTextStyle: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
-                      child: CalendarCarousel(
-                        weekendTextStyle: const TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                        ),
-                        thisMonthDayBorderColor: Colors.transparent,
-                        weekFormat: false,
-                        daysTextStyle: const TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                        ),
-                        height: 300.0,
-                        markedDateIconBorderColor: Colors.transparent,
-                        childAspectRatio: 1.5,
-                        dayPadding: 0.0,
-                        prevDaysTextStyle: TextStyle(fontSize: 15),
-                        selectedDateTime: DateTime.now(),
-                        headerTextStyle: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        dayButtonColor: Colors.white,
-                        weekDayBackgroundColor: Colors.white,
-                        markedDateMoreCustomDecoration: BoxDecoration(color: Colors.white),
-                        shouldShowTransform: false,
-                        staticSixWeekFormat: false,
-                        weekdayTextStyle: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        todayButtonColor: Colors.transparent,
-                        selectedDayBorderColor: Colors.transparent,
-                        todayBorderColor: Colors.transparent,
-                        selectedDayButtonColor: Colors.transparent,
-                        daysHaveCircularBorder: false,
-                        todayTextStyle: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.deepPurple,
-                        ),
+                      thisMonthDayBorderColor: Colors.transparent,
+                      weekFormat: false,
+                      daysTextStyle: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
                       ),
+                      height: 300.0,
+                      markedDateIconBorderColor: Colors.transparent,
+                      childAspectRatio: 1.5,
+                      dayPadding: 0.0,
+                      prevDaysTextStyle: const TextStyle(fontSize: 15),
+                      selectedDateTime: DateTime.now(),
+                      headerTextStyle: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      dayButtonColor: Colors.white,
+                      weekDayBackgroundColor: Colors.white,
+                      markedDateMoreCustomDecoration: const BoxDecoration(color: Colors.white),
+                      shouldShowTransform: false,
+                      staticSixWeekFormat: false,
+                      weekdayTextStyle: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      todayButtonColor: Colors.transparent,
+                      selectedDayBorderColor: Colors.transparent,
+                      todayBorderColor: Colors.transparent,
+                      selectedDayButtonColor: Colors.transparent,
+                      daysHaveCircularBorder: false,
+                      todayTextStyle: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.deepPurple,
+                      ),
+                    ),
                   )
                 ],
               ),
@@ -1395,193 +1238,4 @@ class GeneralScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class GeneralDataValue extends StatelessWidget {
-  final GeneralData generalData;
-
-  const GeneralDataValue({super.key, required this.generalData});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: ColorRes.white,
-      ),
-      padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Image.asset(
-                  generalData.image,
-                  height: 35,
-                  width: 35,
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  generalData.title,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              SizedBox(
-                height: 130,
-                width: 150,
-                child: SfCartesianChart(
-                  primaryXAxis: const CategoryAxis(
-                    isVisible: false,
-                  ),
-                  primaryYAxis: const NumericAxis(
-                    isVisible: false,
-                  ),
-                  plotAreaBorderWidth: 0,
-                  series: <LineSeries<SalesData, String>>[
-                    LineSeries<SalesData, String>(
-                      dataSource: <SalesData>[
-                        SalesData('Jan', 35),
-                        SalesData('Feb', 28),
-                        SalesData('Mar', 34),
-                        SalesData('Apr', 32),
-                        SalesData('May', 40),
-                      ],
-                      xValueMapper: (SalesData sales, _) => sales.year,
-                      yValueMapper: (SalesData sales, _) => sales.sales,
-                      color: Colors.black,
-                      // Shadow color
-                      width: 2, //
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: generalData.color,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                child: Column(
-                  children: [
-                    Text(
-                      generalData.price,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      generalData.tex,
-                      style: TextStyle(
-                        color: generalData.textColor,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(width: 15),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class SocialCard extends StatelessWidget {
-
-  final SocialData socialData;
-
-  const SocialCard({super.key, required this.socialData});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 365,
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10).copyWith(bottom: 25),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Image.asset(socialData.image,height: 40,width: 40,),
-                  const SizedBox(width: 20,),
-                  Text(
-                    socialData.title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                socialData.percent,
-                style: const TextStyle(
-                  color: Colors.green,
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    socialData.followers,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    "Followers",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey.shade500
-                    ),
-                  ),
-                ],
-              ),
-              CircularPercentIndicator(
-                percent: socialData.circularValue,
-                center: Text(
-                  socialData.centerText,
-                  style: TextStyle(fontSize: 12),
-                ),
-                animation: true,
-                circularStrokeCap: CircularStrokeCap.round,
-                progressColor: socialData.color,
-                backgroundColor: Colors.grey.shade400,
-                radius: 40,
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class SalesData {
-  SalesData(this.year, this.sales);
-
-  final String year;
-  final double sales;
 }

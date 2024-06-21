@@ -15,9 +15,9 @@ class GeneralController extends GetxController {
 
   fetchDataGeneral() {
     var data = [
-      GeneralData(image: AssetRes.bitcoin, title: 'Bitcoin', tex: '+50%', price: '\$${2143}', color: ColorRes.lightOrange, textColor: ColorRes.darkOrange),
-      GeneralData(image: AssetRes.tether, title: 'Ethereuam', tex: '+30%', price: '\$${7433}', color: ColorRes.lightPurple, textColor: ColorRes.darkPurple),
-      GeneralData(image: AssetRes.bandProtocol, title: 'Doge Coin', tex: '+10%', price: '\$${2343}', color: Colors.green.withOpacity(.3), textColor: Colors.green),
+      GeneralData(image: AssetRes.bitcoin, title: 'Bitcoin', tex: '+50%', price: '\$${2143}', color: ColorRes.lightOrange.withOpacity(.2), textColor: ColorRes.darkOrange),
+      GeneralData(image: AssetRes.tether, title: 'Ethereuam', tex: '+30%', price: '\$${7433}', color: ColorRes.lightPurple.withOpacity(.2), textColor: ColorRes.darkPurple),
+      GeneralData(image: AssetRes.bandProtocol, title: 'Doge Coin', tex: '+10%', price: '\$${2343}', color: Colors.green.withOpacity(.2), textColor: Colors.green),
     ];
     generalList.value = data;
   }
@@ -42,9 +42,15 @@ class GeneralController extends GetxController {
     SocialData(color: Colors.blueAccent, title: "Snapchat", centerText: "78%", circularValue: 0.78, followers: "12,098", image: AssetRes.snapchat, percent: "+22.9%"),
     SocialData(color: Colors.blueAccent, title: "Tumbler", centerText: "50%", circularValue: 0.5, followers: "12,564", image: AssetRes.tumbler, percent: "+14.09%"),
     SocialData(color: Colors.orangeAccent, title: "Twitter", centerText: "70%", circularValue: 0.7, followers: "15,080", image: AssetRes.twitterLogo, percent: "+27.4%"),
-    SocialData(color: Colors.redAccent, title: "Facebook", centerText: "80%", circularValue: 0.8, followers: "68,954", image: AssetRes.snapchat, percent: "+22.9%"),
+    SocialData(color: Colors.redAccent, title: "Facebook", centerText: "80%", circularValue: 0.8, followers: "68,954", image: AssetRes.facebookLogo, percent: "+22.9%"),
   ];
-  
+
+  List<OrderData> orderData = [
+    OrderData(color: Colors.deepPurpleAccent,image: AssetRes.stock,percentage: "+50%",price: "2,435",title: "New Orders"),
+    OrderData(color: Colors.orangeAccent,image: AssetRes.personRemove,percentage: "+20%",price: "2,908",title: "New Customers"),
+    OrderData(color: Colors.redAccent,image: AssetRes.discount,percentage: "-10%",price: "\$389k",title: "Average Sale"),
+    OrderData(color: Colors.green,image: AssetRes.dolar,percentage: "+80%",price: "\$3,908",title: "Gross Profit"),
+  ];
 }
 
 class ChartDataSale1 {
@@ -61,6 +67,20 @@ class ChartDataLive {
   final double? y;
 }
 
+
+class SalesData {
+  SalesData(this.year, this.sales);
+
+  final String year;
+  final double sales;
+}
+
+class ChartData {
+  final String month;
+  final double followers;
+
+  ChartData(this.month, this.followers);
+}
 
 class GeneralData {
   final String image;
@@ -101,4 +121,14 @@ class SocialData {
     required this.image,
     required this.percent,
   });
+}
+
+class OrderData{
+  final String title;
+  final String price;
+  final String percentage;
+  final Color color;
+  final String image;
+
+  OrderData({required this.title, required this.price, required this.percentage, required this.color, required this.image});
 }

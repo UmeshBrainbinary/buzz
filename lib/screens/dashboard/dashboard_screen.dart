@@ -20,6 +20,7 @@ import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/pricing/pricing_screen.dart';
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_screen.dart';
+import 'package:buzz/screens/project_create_new/project_create_new_screen.dart';
 import 'package:buzz/screens/project_list/project_list_screen.dart';
 import 'package:buzz/screens/user_cards/user_card_screen.dart';
 import 'package:buzz/screens/user_edit/user_edit_screen.dart';
@@ -155,7 +156,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     else if (index == StringRes.createNew) {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child:Text('nj'), screenName: 'Project'));
+          () => DashBoardScreen(child:ProjectCreateNewScreen(), screenName: 'Project'));
     }
   }
 
