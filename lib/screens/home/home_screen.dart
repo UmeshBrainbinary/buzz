@@ -4,11 +4,9 @@ import 'package:buzz/screens/product_page/widget/product_page_widget.dart';
 import 'package:buzz/utils/Assets_res.dart';
 import 'package:buzz/utils/Color.dart';
 import 'package:buzz/utils/string.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:graphic/graphic.dart' as graphic;
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -88,291 +86,349 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 const SizedBox(
                   height: 25,
                 ),
-                sizingInformation.isMobile || sizingInformation.isTablet
-                    ? Column(
-                        children: [
-                          buildWrap(),
-                        ],
-                      )
-                    : Row(
-                        children: [
-                          buildWrap(),
-                        ],
-                      ),
+                Wrap(
+                 direction: Axis.horizontal,
+                  children: homeController.wrapDataList
+                      .map((element) => Padding(
+                    padding: const EdgeInsets.only(
+                        left: 10.0, top: 20),
+                    child: DataWrap(
+                      wrapData: homeController.wrapDataList[
+                      homeController.wrapDataList
+                          .indexOf(element)],
+                    ),
+                  ))
+                      .toList(),
+                ),
+
                 const SizedBox(
                   height: 25,
                 ),
-                sizingInformation.isMobile || sizingInformation.isTablet
-                    ? Column(
-                        children: [
-                          buildWrap1(),
-                        ],
-                      )
-                    : Row(
-                        children: [
-                          buildWrap1(),
-                        ],
-                      ),
+
                 const SizedBox(
                   height: 20,
                 ),
-                defaultContainer(),
-               SizedBox(height: 20,),
-               sizingInformation.isTablet || sizingInformation.isMobile?
-               Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorRes.lightSky,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 35,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: ColorRes.yellow),
-                              child: const Padding(
-                                padding: EdgeInsets.only(left: 15.0, right: 15),
-                                child: Center(
-                                    child: Text(
-                                      StringRes.onTheGo,
-                                      style: TextStyle(fontWeight: FontWeight.bold),
-                                    )),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const Text(
-                              StringRes.downloadApp,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: ColorRes.black),
-                              child: const Padding(
-                                padding: EdgeInsets.only(left: 10.0, right: 10),
-                                child: Center(
-                                    child: Text(
-                                      StringRes.download,
-                                      style: TextStyle(color: ColorRes.white),
-                                    )),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const Text(
-                              StringRes.available,
-                              style: TextStyle(
-                                  color: ColorRes.textcolor,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Image.asset(
-                          AssetRes.image,
-                          height: 350,
-                          width: 145,
-                        )
-                      ],
-                    ),
-                  ),
-                ):
-               SizedBox(),
+               Wrap(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Container(
+                       width: 320,
+                       child: Container(
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(10),
+                           color: ColorRes.white,
+                         ),
+                         child: Padding(
+                           padding: const EdgeInsets.all(10.0),
+                           child: Column(
+                             children: [
+                               const Row(
+                                 children: [
+                                   Text(
+                                     StringRes.countries,
+                                     style: TextStyle(
+                                         fontWeight: FontWeight.bold, fontSize: 18),
+                                   ),
+                                   Spacer(),
+                                   Icon(Icons.more_vert)
+                                 ],
+                               ),
+                               const SizedBox(
+                                 height: 10,
+                               ),
+                               SizedBox(
+                                 height: 300,
+                                 child: ListView.builder(
+                                   physics: const NeverScrollableScrollPhysics(),
+                                   shrinkWrap: true,
+                                   itemCount: homeController.data.length,
+                                   itemBuilder: (context, index) {
+                                     return Padding(
+                                       padding: const EdgeInsets.all(10.0),
+                                       child: Row(
+                                         children: [
+                                           ClipRRect(
+                                               borderRadius: BorderRadius.circular(100),
+                                               child: Image.asset(
+                                                 homeController.data[index]['image'],
+                                                 height: 40,
+                                                 width: 40,
+                                                 fit: BoxFit.fill,
+                                               )),
+                                           const SizedBox(
+                                             width: 20,
+                                           ),
+                                           Text(
+                                             homeController.data[index]['title'],
+                                             style: const TextStyle(
+                                                 fontWeight: FontWeight.bold),
+                                           ),
+                                           const Spacer(),
+                                           Text(
+                                             homeController.data[index]['rate'],
+                                             style: const TextStyle(
+                                                 color: ColorRes.textcolor),
+                                           ),
+                                         ],
+                                       ),
+                                     );
+                                   },
+                                 ),
+                               ),
+                               const Row(
+                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 children: [
+                                   Text(
+                                     'See all',
+                                     style: TextStyle(color: ColorRes.textcolor),
+                                   ),
+                                   SizedBox(
+                                     width: 10,
+                                   ),
+                                   Icon(
+                                     Icons.arrow_forward_ios,
+                                     size: 12,
+                                   )
+                                 ],
+                               )
+                             ],
+                           ),
+                         ),
+                       ),
+                     ),
+                   ),
+
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Container(
+                       width: 320,
+                       child: Container(
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(10),
+                           color: ColorRes.lightSky,
+                         ),
+                         child: Padding(
+                           padding: const EdgeInsets.all(10.0),
+                           child: Row(
+                             children: [
+                               Column(
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: [
+                                   Container(
+                                     height: 35,
+                                     decoration: BoxDecoration(
+                                         borderRadius: BorderRadius.circular(10),
+                                         color: ColorRes.yellow),
+                                     child: const Padding(
+                                       padding: EdgeInsets.only(left: 15.0, right: 15),
+                                       child: Center(
+                                           child: Text(
+                                             StringRes.onTheGo,
+                                             style: TextStyle(fontWeight: FontWeight.bold),
+                                           )),
+                                     ),
+                                   ),
+                                   const SizedBox(
+                                     height: 20,
+                                   ),
+                                   const Text(
+                                     StringRes.downloadApp,
+                                     style: TextStyle(
+                                         fontWeight: FontWeight.bold, fontSize: 18),
+                                   ),
+                                   const SizedBox(
+                                     height: 30,
+                                   ),
+                                   Container(
+                                     height: 40,
+                                     decoration: BoxDecoration(
+                                         borderRadius: BorderRadius.circular(10),
+                                         color: ColorRes.black),
+                                     child: const Padding(
+                                       padding: EdgeInsets.only(left: 10.0, right: 10),
+                                       child: Center(
+                                           child: Text(
+                                             StringRes.download,
+                                             style: TextStyle(color: ColorRes.white),
+                                           )),
+                                     ),
+                                   ),
+                                   const SizedBox(
+                                     height: 10,
+                                   ),
+                                   const Text(
+                                     StringRes.available,
+                                     style: TextStyle(
+                                         color: ColorRes.textcolor,
+                                         fontSize: 12,
+                                         fontWeight: FontWeight.bold),
+                                   ),
+                                 ],
+                               ),
+                               const Spacer(),
+                               Image.asset(
+                                 AssetRes.image,
+                                 height: 350,
+                                 width: 120,
+                               )
+                             ],
+                           ),
+                         ),
+                       ),
+                     ),
+                   ),
+
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Container(
+                         width: 320,
+                         child: Container(
+                           decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(10), color: ColorRes.white),
+                           child: Padding(
+                             padding: const EdgeInsets.all(10.0),
+                             child: Column(
+                               children: [
+                                 const Row(
+                                   children: [
+                                     Text(StringRes.activity),
+                                     SizedBox(
+                                       width: 10,
+                                     ),
+                                     Icon(Icons.error_outline),
+                                     Spacer(),
+                                     Text(
+                                       StringRes.more,
+                                       style: TextStyle(color: ColorRes.textcolor),
+                                     ),
+                                     SizedBox(
+                                       width: 5,
+                                     ),
+                                     Icon(
+                                       Icons.arrow_forward_ios,
+                                       size: 12,
+                                     ),
+                                   ],
+                                 ),
+                                 const SizedBox(
+                                   height: 20,
+                                 ),
+                                 SizedBox(
+                                   height: 310,
+                                   child: ListView.builder(
+                                     physics: const NeverScrollableScrollPhysics(),
+                                     shrinkWrap: true,
+                                     itemCount: homeController.activity.length,
+                                     itemBuilder: (context, index) {
+                                       return Padding(
+                                         padding: const EdgeInsets.all(10.0),
+                                         child: Row(
+                                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                           children: [
+                                             ClipRRect(
+                                                 borderRadius: BorderRadius.circular(100),
+                                                 child: Image.asset(
+                                                   homeController.activity[index]['image'],
+                                                   height: 40,
+                                                   width: 40,
+                                                 )),
+                                             Column(
+                                               crossAxisAlignment: CrossAxisAlignment.start,
+                                               children: [
+                                                 Text(homeController.activity[index]['title']),
+                                                 Text(
+                                                   homeController.activity[index]['sub'],
+                                                   style: const TextStyle(
+                                                       color: ColorRes.textcolor),
+                                                 ),
+                                               ],
+                                             ),
+                                             Column(
+                                               children: [
+                                                 Text(homeController.activity[index]['rate']),
+                                                 Text(
+                                                   homeController.activity[index]['date'],
+                                                   style: const TextStyle(
+                                                       color: ColorRes.textcolor),
+                                                 ),
+                                               ],
+                                             ),
+                                           ],
+                                         ),
+                                       );
+                                     },
+                                   ),
+                                 ),
+                               ],
+                             ),
+                           ),
+                         )),
+                   )
+                 ],
+               ),
+
                 SizedBox(height: 20,),
-                sizingInformation.isMobile?
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10), color: ColorRes.white),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        const Row(
-                          children: [
-                            Text(StringRes.activity),
-                            SizedBox(
-                              width: 10,
+
+                Wrap(
+                  direction: Axis.horizontal,
+                  children: homeController.totalDefault
+                      .map((element) => Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10.0, top: 20),
+                            child: DataDefault(
+                              defaultData: homeController.totalDefault[
+                                  homeController.totalDefault
+                                      .indexOf(element)],
                             ),
-                            Icon(Icons.error_outline),
-                            Spacer(),
-                            Text(
-                              StringRes.more,
-                              style: TextStyle(color: ColorRes.textcolor),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 12,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        SizedBox(
-                          height: 310,
-                          child: ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: homeController.activity.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    ClipRRect(
-                                        borderRadius: BorderRadius.circular(100),
-                                        child: Image.asset(
-                                          homeController.activity[index]['image'],
-                                          height: 40,
-                                          width: 40,
-                                        )),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(homeController.activity[index]['title']),
-                                        Text(
-                                          homeController.activity[index]['sub'],
-                                          style: const TextStyle(
-                                              color: ColorRes.textcolor),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(homeController.activity[index]['rate']),
-                                        Text(
-                                          homeController.activity[index]['date'],
-                                          style: const TextStyle(
-                                              color: ColorRes.textcolor),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ):SizedBox(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Wrap(
-                        direction: Axis.horizontal,
-                        children: homeController.totalDefault
-                            .map((element) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 20),
-                                  child: DataDefault(
-                                    defaultData: homeController.totalDefault[
-                                        homeController.totalDefault
-                                            .indexOf(element)],
-                                  ),
-                                ))
-                            .toList(),
-                      ),
-                    )
-                  ],
+                          ))
+                      .toList(),
                 ),
                 SizedBox(height: 30,),
-                Expanded(
-                  child: Container(
-                    height: 550,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: ColorRes.white
-                    ),
-                    child:Row(
-                      children: [
-                        Expanded(
-                          child: _buildColumnRoundedChart(),
-                        ),
-                        SizedBox(width: 30,),
-                      sizingInformation.isDesktop?  Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Payment Method',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                                SizedBox(height: 20,),
-                                tabContainer(),
-                                SizedBox(height: 20,),
-                                SizedBox(
-                                  height: 400,
-                                  child: TabBarView(
-                                    controller: tabController,
-                                    children: [
-                                      text(),
-                                      text(),
-                                      text(),
-                                    ],
-                                  ),
-                                )
 
-                              ],
-                            ),
-                          ),
-                        ):SizedBox(),
-                      ],
+                Container(
+
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ColorRes.white
+                  ),
+                  child:Wrap(
+                    children: [
+                      _buildColumnRoundedChart(),
+                      SizedBox(width: 30,),
+                     Container(
+                      width: 470,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Payment Method',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                            SizedBox(height: 20,),
+                            tabContainer(),
+                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 400,
+                              child: TabBarView(
+                                controller: tabController,
+                                children: [
+                                  text(),
+                                  text(),
+                                  text(),
+                                ],
+                              ),
+                            )
+
+                          ],
+                        ),
+                      ),
                     ),
+                    ],
                   ),
                 ),
                 SizedBox(height: 20,),
-                sizingInformation.isTablet || sizingInformation.isMobile?
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorRes.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Payment Method',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                        SizedBox(height: 20,),
-                        tabContainer(),
-                        SizedBox(height: 20,),
-                        SizedBox(
-                          height: 400,
-                          child: TabBarView(
-                            controller: tabController,
-                            children: [
-                              text(),
-                              text(),
-                              text(),
-                            ],
-                          ),
-                        )
 
-                      ],
-                    ),
-                  ),
-                ):
-                SizedBox(),
+
               ],
             );
           },
@@ -385,132 +441,36 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Widget method(){
     return Column(
       children: [
-        Expanded(
-          child: _buildColumnRoundedChart(),
-        ),
+        _buildColumnRoundedChart(),
         SizedBox(width: 30,),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Payment Method',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                SizedBox(height: 20,),
-                tabContainer(),
-                SizedBox(height: 20,),
-                SizedBox(
-                  height: 400,
-                  child: TabBarView(
-                    controller: tabController,
-                    children: [
-                      text(),
-                      text(),
-                      text(),
-                    ],
-                  ),
-                )
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Payment Method',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+              SizedBox(height: 20,),
+              tabContainer(),
+              SizedBox(height: 20,),
+              SizedBox(
+                height: 400,
+                child: TabBarView(
+                  controller: tabController,
+                  children: [
+                    text(),
+                    text(),
+                    text(),
+                  ],
+                ),
+              )
 
-              ],
-            ),
+            ],
           ),
         ),
       ],
     );
   }
-  Widget buildWrap() {
-    return Wrap(
-      runSpacing: 20,
-      spacing: 20,
-      children: [
-        commonContainer(
-          title: StringRes.totalEarning,
-          text: '9.55%',
-          price: '\$${29955}',
-          image: AssetRes.dolar,
-          color: ColorRes.lightBlue,
-          imageColor: ColorRes.blue,
-        ),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '2.29%',
-            image: AssetRes.user,
-            title: StringRes.customer,
-            color: ColorRes.lightPink,
-            imageColor: ColorRes.darkPink,
-            price: '\$${19235}'),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '9.23%',
-            image: AssetRes.box,
-            title: StringRes.order,
-            color: ColorRes.lightOrange,
-            imageColor: ColorRes.darkOrange,
-            price: '\$${9955}'),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '5.33%',
-            image: AssetRes.wallet,
-            title: StringRes.availableBalance,
-            color: ColorRes.lightPurple,
-            imageColor: ColorRes.darkPurple,
-            price: '\$${95295}'),
-      ],
-    );
-  }
 
-  Widget buildWrap1() {
-    return Wrap(
-      runSpacing: 20,
-      spacing: 20,
-      children: [
-        commonContainer(
-          title: StringRes.totalEarning,
-          text: '9.55%',
-          price: '\$${29955}',
-          image: AssetRes.rate,
-          color: ColorRes.lightPerot,
-          imageColor: ColorRes.darkPerot,
-        ),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '2.29%',
-            image: AssetRes.users,
-            title: StringRes.customer,
-            color: ColorRes.lightBlue,
-            imageColor: ColorRes.blue,
-            price: '\$${19235}'),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '9.23%',
-            image: AssetRes.file,
-            title: StringRes.order,
-            color: ColorRes.lightOrange,
-            imageColor: ColorRes.darkOrange,
-            price: '\$${9955}'),
-        const SizedBox(
-          width: 8,
-        ),
-        commonContainer(
-            text: '5.33%',
-            image: AssetRes.chart,
-            title: StringRes.availableBalance,
-            color: ColorRes.lightBlue,
-            imageColor: ColorRes.blue,
-            price: '\$${95295}'),
-      ],
-    );
-  }
 }
 
 class DataDefault extends StatelessWidget {
@@ -619,18 +579,21 @@ Widget _buildColumnRoundedChart() {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         const SizedBox(height: 20),
-        SfCartesianChart(
-          primaryXAxis: const CategoryAxis(),
-          series: <CartesianSeries>[
-            ColumnSeries<SalesData, String>(
-              dataSource: chartData,
-              xValueMapper: (SalesData sales, _) => sales.month,
-              yValueMapper: (SalesData sales, _) => sales.sales,
-              borderRadius: BorderRadius.circular(15),
-              color: const Color(0xff0059E7),
-              dataLabelSettings: const DataLabelSettings(isVisible: true),
-            )
-          ],
+        Container(
+          width: 500,
+          child: SfCartesianChart(
+            primaryXAxis: const CategoryAxis(),
+            series: <CartesianSeries>[
+              ColumnSeries<SalesData, String>(
+                dataSource: chartData,
+                xValueMapper: (SalesData sales, _) => sales.month,
+                yValueMapper: (SalesData sales, _) => sales.sales,
+                borderRadius: BorderRadius.circular(15),
+                color: const Color(0xff0059E7),
+                dataLabelSettings: const DataLabelSettings(isVisible: true),
+              )
+            ],
+          ),
         ),
       ],
     ),

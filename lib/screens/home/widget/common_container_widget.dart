@@ -12,6 +12,88 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 HomeController homeController = Get.find<HomeController>();
 
+class DataWrap extends StatelessWidget {
+  final WrapData wrapData;
+
+  const DataWrap({super.key, required this.wrapData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Container(
+        width: 230,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: ColorRes.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            children: [
+              Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: wrapData.color,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    wrapData.image,
+                    color: wrapData.imageColor,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    wrapData.title,
+                    style: const TextStyle(
+                        color: ColorRes.textcolor, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        wrapData.price,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        wrapData.tex,
+                        style: const TextStyle(color: ColorRes.textcolor),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        AssetRes.upArrow,
+                        height: 12,
+                        width: 12,
+                      )
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 Widget commonContainer(
     {required String text,
     required String image,
@@ -61,7 +143,8 @@ Widget commonContainer(
                 children: [
                   Text(
                     price,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   const SizedBox(
                     width: 10,
@@ -89,266 +172,259 @@ Widget commonContainer(
 }
 
 Widget defaultContainer() {
-  return ResponsiveBuilder(
-    builder: (BuildContext context, SizingInformation sizingInformation) {
-      return Expanded(
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: ColorRes.white,
+  return Row(
+    children: [
+      Container(
+        width: 320,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: ColorRes.white,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const Row(
+                  children: [
+                    Text(
+                      StringRes.countries,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    Spacer(),
+                    Icon(Icons.more_vert)
+                  ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      const Row(
-                        children: [
-                          Text(
-                            StringRes.countries,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          Spacer(),
-                          Icon(Icons.more_vert)
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 300,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: homeController.data.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.circular(100),
-                                      child: Image.asset(
-                                        homeController.data[index]['image'],
-                                        height: 40,
-                                        width: 40,
-                                        fit: BoxFit.fill,
-                                      )),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    homeController.data[index]['title'],
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    homeController.data[index]['rate'],
-                                    style:
-                                    const TextStyle(color: ColorRes.textcolor),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'See all',
-                            style: TextStyle(color: ColorRes.textcolor),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 12,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-         sizingInformation.isDesktop?
-         Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: ColorRes.lightSky,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 35,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ColorRes.yellow),
-                            child: const Padding(
-                              padding: EdgeInsets.only(left: 15.0, right: 15),
-                              child: Center(
-                                  child: Text(
-                                    StringRes.onTheGo,
-                                    style: TextStyle(fontWeight: FontWeight.bold),
-                                  )),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const Text(
-                            StringRes.downloadApp,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ColorRes.black),
-                            child: const Padding(
-                              padding: EdgeInsets.only(left: 10.0, right: 10),
-                              child: Center(
-                                  child: Text(
-                                    StringRes.download,
-                                    style: TextStyle(color: ColorRes.white),
-                                  )),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            StringRes.available,
-                            style: TextStyle(
-                                color: ColorRes.textcolor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      Image.asset(
-                        AssetRes.image,
-                        height: 350,
-                        width: 145,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ):
-         SizedBox(),
-            const SizedBox(
-              width: 20,
-            ),
-          sizingInformation.isDesktop || sizingInformation.isTablet?  Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10), color: ColorRes.white),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        const Row(
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: homeController.data.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
                           children: [
-                            Text(StringRes.activity),
-                            SizedBox(
-                              width: 10,
+                            ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.asset(
+                                  homeController.data[index]['image'],
+                                  height: 40,
+                                  width: 40,
+                                  fit: BoxFit.fill,
+                                )),
+                            const SizedBox(
+                              width: 20,
                             ),
-                            Icon(Icons.error_outline),
-                            Spacer(),
                             Text(
-                              StringRes.more,
-                              style: TextStyle(color: ColorRes.textcolor),
+                              homeController.data[index]['title'],
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 12,
+                            const Spacer(),
+                            Text(
+                              homeController.data[index]['rate'],
+                              style: const TextStyle(
+                                  color: ColorRes.textcolor),
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        SizedBox(
-                          height: 310,
-                          child: ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: homeController.activity.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    ClipRRect(
-                                        borderRadius: BorderRadius.circular(100),
-                                        child: Image.asset(
-                                          homeController.activity[index]['image'],
-                                          height: 40,
-                                          width: 40,
-                                        )),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(homeController.activity[index]['title']),
-                                        Text(
-                                          homeController.activity[index]['sub'],
-                                          style: const TextStyle(
-                                              color: ColorRes.textcolor),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(homeController.activity[index]['rate']),
-                                        Text(
-                                          homeController.activity[index]['date'],
-                                          style: const TextStyle(
-                                              color: ColorRes.textcolor),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'See all',
+                      style: TextStyle(color: ColorRes.textcolor),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 12,
+                    )
+                  ],
                 )
-          ):SizedBox(),
-          ],
+              ],
+            ),
+          ),
         ),
-      );
-    },
-
+      ),
+      const SizedBox(
+        width: 20,
+      ),
+      Container(
+        width: 350,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: ColorRes.lightSky,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ColorRes.yellow),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 15.0, right: 15),
+                        child: Center(
+                            child: Text(
+                          StringRes.onTheGo,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      StringRes.downloadApp,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ColorRes.black),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 10.0, right: 10),
+                        child: Center(
+                            child: Text(
+                          StringRes.download,
+                          style: TextStyle(color: ColorRes.white),
+                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      StringRes.available,
+                      style: TextStyle(
+                          color: ColorRes.textcolor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Image.asset(
+                  AssetRes.image,
+                  height: 350,
+                  width: 145,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(
+        width: 20,
+      ),
+      Container(
+        width: 320,
+          child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10), color: ColorRes.white),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  Text(StringRes.activity),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(Icons.error_outline),
+                  Spacer(),
+                  Text(
+                    StringRes.more,
+                    style: TextStyle(color: ColorRes.textcolor),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 12,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 310,
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: homeController.activity.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.asset(
+                                homeController.activity[index]['image'],
+                                height: 40,
+                                width: 40,
+                              )),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(homeController.activity[index]['title']),
+                              Text(
+                                homeController.activity[index]['sub'],
+                                style: const TextStyle(
+                                    color: ColorRes.textcolor),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(homeController.activity[index]['rate']),
+                              Text(
+                                homeController.activity[index]['date'],
+                                style: const TextStyle(
+                                    color: ColorRes.textcolor),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ))
+    ],
   );
 }
 
@@ -444,12 +520,11 @@ Widget text() {
         children: [
           Expanded(
               child: TextFormField(
-                controller: homeController.cardNumber,
+            controller: homeController.cardNumber,
             decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: ColorRes.blue)
-                ),
+                    borderSide: BorderSide(color: ColorRes.blue)),
                 hintText: 'Enter Number',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -460,12 +535,11 @@ Widget text() {
           ),
           Expanded(
               child: TextFormField(
-                controller: homeController.cardName,
+            controller: homeController.cardName,
             decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: ColorRes.blue)
-                ),
+                    borderSide: BorderSide(color: ColorRes.blue)),
                 hintText: 'Enter Name',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -473,9 +547,13 @@ Widget text() {
           )),
         ],
       ),
-      SizedBox(height: 20,),
+      SizedBox(
+        height: 20,
+      ),
       const Text('Expiration Date'),
-      SizedBox(height: 10,),
+      SizedBox(
+        height: 10,
+      ),
       Row(
         children: [
           Obx(
@@ -492,7 +570,9 @@ Widget text() {
               },
             ),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           Obx(
             () => buildDropdownButton(
               value: homeController.dropdownValueYear.value,
@@ -509,9 +589,13 @@ Widget text() {
           ),
         ],
       ),
-      SizedBox(height: 20,),
+      SizedBox(
+        height: 20,
+      ),
       const Text('Card Number'),
-      SizedBox(height: 10,),
+      SizedBox(
+        height: 10,
+      ),
       Row(
         children: [
           Container(
@@ -521,9 +605,8 @@ Widget text() {
               controller: homeController.number,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: ColorRes.blue)
-                ),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: ColorRes.blue)),
                 hintText: 'Number',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -531,18 +614,22 @@ Widget text() {
               ),
             ),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           SizedBox(
             child: const Text(
               'Three or Four Digits,usually found on the back of the card',
-              style: TextStyle(color: ColorRes.textcolor,fontSize: 12),
+              style: TextStyle(color: ColorRes.textcolor, fontSize: 12),
               overflow: TextOverflow.visible,
               maxLines: 2,
             ),
           )
         ],
       ),
-      SizedBox(height: 20,),
+      SizedBox(
+        height: 20,
+      ),
       Container(
         height: 40,
         width: 100,

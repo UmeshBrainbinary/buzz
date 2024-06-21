@@ -135,6 +135,10 @@ static const String liveProduct = 'Live Product';
   static const String projectList = 'Project List';
   static const String createNew= 'Create New';
 
+/// -------------------- product List screen ---------------------------------- ///
 
+static const String create = 'Create';
+static const String share = 'Share';
+static const String filter = 'Filter';
 
 }

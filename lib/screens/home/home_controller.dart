@@ -121,9 +121,11 @@ class HomeController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     fetchData();
+    fetchDataWrap();
   }
 
  var totalDefault = <DefaultData>[].obs;
+  var wrapDataList = <WrapData>[].obs;
   fetchData(){
     var data = [
       DefaultData(title: StringRes.earning, price: '\$${1222}', tex: '12%', backColor: Colors.blue.shade100, color: ColorRes.blue,value: 0.3,colorText: ColorRes.blue),
@@ -133,6 +135,21 @@ class HomeController extends GetxController {
     ];
     totalDefault.value = data;
 
+  }
+
+  fetchDataWrap(){
+    var wrapData= [
+      WrapData(title: StringRes.totalEarning, price: '\$${29955}', tex: '9.55%', color: ColorRes.lightBlue, imageColor: ColorRes.blue, image: AssetRes.dolar),
+      WrapData(title:  StringRes.customer, price:  '\$${19235}', tex: '2.29%', color: ColorRes.lightPink, imageColor: ColorRes.darkPink, image: AssetRes.user),
+      WrapData(title: StringRes.order, price: '\$${9955}', tex: '9.23%', color:  ColorRes.lightOrange, imageColor: ColorRes.darkOrange, image: AssetRes.box),
+      WrapData(title: StringRes.availableBalance, price: '\$${95295}', tex: '5.33%', color:  ColorRes.lightPurple, imageColor: ColorRes.darkPurple, image:  AssetRes.wallet),
+      WrapData(title: StringRes.totalEarning, price:  '\$${29955}', tex: '9.55%', color: ColorRes.lightPerot, imageColor: ColorRes.darkPerot, image: AssetRes.rate),
+      WrapData(title:  StringRes.customer, price:  '\$${19235}', tex: '2.29%', color: ColorRes.lightBlue, imageColor:  ColorRes.blue, image: AssetRes.users),
+      WrapData(title: StringRes.order, price: '\$${9955}', tex: '9.23%', color: ColorRes.lightOrange, imageColor: ColorRes.darkOrange, image: AssetRes.file),
+      WrapData(title: StringRes.availableBalance, price: '\$${95295}', tex: '5.33%', color:  ColorRes.lightBlue, imageColor: ColorRes.blue, image:  AssetRes.chart)
+
+    ];
+    wrapDataList.value = wrapData;
   }
 }
 class DefaultData{
@@ -153,5 +170,25 @@ class DefaultData{
     required this.color,
     required this.colorText,
     required this.value,
+  });
+}
+
+class WrapData{
+
+  final String title;
+  final String price;
+  final String tex;
+  final Color color;
+  final Color imageColor;
+  final String image;
+
+
+  WrapData({
+    required this.title,
+    required this.price,
+    required this.tex,
+    required this.color,
+    required this.imageColor,
+    required this.image,
   });
 }

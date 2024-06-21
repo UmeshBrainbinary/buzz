@@ -7,7 +7,7 @@ Widget piechart(){
   return   PieChart(
     dataMap: controller.dataMap,
     animationDuration: Duration(milliseconds: 800),
-    chartRadius: 200,
+    chartRadius: 220,
     colorList: controller.colorList,
     initialAngleInDegree: 0,
     chartType: ChartType.disc,
