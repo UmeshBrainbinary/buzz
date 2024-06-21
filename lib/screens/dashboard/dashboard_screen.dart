@@ -1,4 +1,5 @@
 import 'package:buzz/hour.dart';
+import 'package:buzz/screens/Avatar/Avatar_screen.dart';
 
 import 'package:buzz/screens/Buttons/Defult_style/default_style_screen.dart';
 import 'package:buzz/screens/Buttons/Edge_style/Edgebuttons_screen.dart';
@@ -19,6 +20,7 @@ import 'package:buzz/screens/invoice/invoice_screen.dart';
 import 'package:buzz/screens/pricing/pricing_screen.dart';
 import 'package:buzz/screens/product/product_screen.dart';
 import 'package:buzz/screens/product_page/product_page_screen.dart';
+import 'package:buzz/screens/project_list/project_list_screen.dart';
 import 'package:buzz/screens/user_cards/user_card_screen.dart';
 import 'package:buzz/screens/user_edit/user_edit_screen.dart';
 import 'package:buzz/screens/user_profile/user_profile_screen.dart';
@@ -148,7 +150,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     else if (index == StringRes.projectList) {
       Get.offAll(
           transition: Transition.noTransition,
-          () => DashBoardScreen(child:Text('nx'), screenName: 'Project'));
+          () => DashBoardScreen(child:ProjectListScreen(), screenName: 'Project'));
     }
     else if (index == StringRes.createNew) {
       Get.offAll(

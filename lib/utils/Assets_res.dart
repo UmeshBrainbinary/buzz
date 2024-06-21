@@ -59,5 +59,9 @@ class AssetRes {
   static const tumbler = '${images}tumbler.png';
   static const twitterLogo = '${images}twitter_logo.png';
   static const facebookLogo = '${images}facebook_logo.png';
+  static const flutter = '${images}flutter.png';
+  static const dart = '${images}dart.png';
+  static const java = '${images}java.png';
+  static const nodejs = '${images}nodejs.png';
 
 }

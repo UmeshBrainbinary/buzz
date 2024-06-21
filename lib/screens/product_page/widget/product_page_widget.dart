@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-ProductPageController controller = Get.find<ProductPageController>();
+ProductPageController controller = Get.put(ProductPageController());
 
 Widget productTitle() {
   return row(
