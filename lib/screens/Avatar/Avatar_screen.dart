@@ -142,7 +142,7 @@ class AvatarScreen extends StatelessWidget {
                                 Widgets: Wrap(crossAxisAlignment: WrapCrossAlignment.center,
                                   children:
                                   List<Widget>.generate(buttonName.length, (index) {
-                                    double indexs = (50 - index*4) as double;
+                                    double indexs = (50 - index * 4);
                                     return Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: CircleAvatar(radius:  indexs,
@@ -156,7 +156,6 @@ class AvatarScreen extends StatelessWidget {
                                   }),
                                 ),
                               ),
-
                               SizedBox(
                                 height: 20,
                               ),
@@ -170,29 +169,30 @@ class AvatarScreen extends StatelessWidget {
                                       padding: const EdgeInsets.all(10),
                                       child: Stack(
                                         children: [
-
-
-                                          CircleAvatar(radius:  indexs,
-                                              backgroundColor: buttonName[index]['color'],
-                                              child: Image.asset(fit: BoxFit.cover,
-                                                buttonName[index]['image']!,
-
-                                              )),
+                                          CircleAvatar(
+                                            radius: indexs,
+                                            backgroundColor: buttonName[index]['color'],
+                                            child: Image.asset(
+                                              buttonName[index]['image']!,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                           Positioned(right: 9,
                                               bottom:0,
                                               child: Container(
-                                                decoration: BoxDecoration(color:    buttonName[index]['dot'],
-                                                    shape: BoxShape.circle),
-                                                height: 14,width:14 ,)),
+                                                decoration: BoxDecoration(
+                                                  color: buttonName[index]['dot'],
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                height: 14,width:14 ,
+                                              ),
+                                          ),
                                         ],
                                       ),
-
                                     );
                                   }),
                                 ),
                               ),
-
-
                               SizedBox(
                                 height: 20,
                               ),
